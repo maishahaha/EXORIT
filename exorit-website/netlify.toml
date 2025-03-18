@@ -1,4 +1,5 @@
 [build]
+  base = "exorit-website"
   command = "npm run build"
   publish = "dist"
   functions = "netlify/functions"
