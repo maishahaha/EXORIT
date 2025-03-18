@@ -1,6 +1,6 @@
 [build]
   base = "exorit-website"
-  command = "npm install @rollup/rollup-linux-x64-gnu && npm run build"
+  command = "npm run build"
   publish = "dist"
   functions = "netlify/functions"
   
@@ -51,7 +51,6 @@
   [headers.values]
     Content-Type = "application/javascript; charset=utf-8"
     Cache-Control = "public, max-age=31536000, immutable"
-    X-Content-Type-Options = "nosniff"
 
 [[headers]]
   for = "/*.mjs"
@@ -83,7 +82,6 @@
   from = "/*"
   to = "/index.html"
   status = 200
-  force = true
 
 [[redirects]]
   from = "http://*"
