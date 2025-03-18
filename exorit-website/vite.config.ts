@@ -9,8 +9,13 @@ export default defineConfig({
     assetsDir: 'assets',
     sourcemap: false,
     minify: 'terser',
+    modulePreload: true,
     rollupOptions: {
       output: {
+        format: 'es',
+        generatedCode: {
+          constBindings: true
+        },
         manualChunks: (id) => {
           if (id.includes('node_modules')) {
             if (id.includes('react')) {

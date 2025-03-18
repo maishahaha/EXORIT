@@ -30,14 +30,28 @@
     X-Content-Type-Options = "nosniff"
     Referrer-Policy = "strict-origin-when-cross-origin"
     Strict-Transport-Security = "max-age=31536000; includeSubDomains"
-    Content-Security-Policy = "upgrade-insecure-requests"
     Cache-Control = "public, max-age=31536000"
+
+[[headers]]
+  for = "/assets/js/*.js"
+  [headers.values]
+    Content-Type = "application/javascript; charset=utf-8"
+    Cache-Control = "public, max-age=31536000, immutable"
+    X-Content-Type-Options = "nosniff"
+
+[[headers]]
+  for = "/assets/css/*.css"
+  [headers.values]
+    Content-Type = "text/css; charset=utf-8"
+    Cache-Control = "public, max-age=31536000, immutable"
+    X-Content-Type-Options = "nosniff"
 
 [[headers]]
   for = "/*.js"
   [headers.values]
-    Content-Type = "application/javascript"
+    Content-Type = "application/javascript; charset=utf-8"
     Cache-Control = "public, max-age=31536000, immutable"
+    X-Content-Type-Options = "nosniff"
 
 [[headers]]
   for = "/*.mjs"
@@ -48,25 +62,22 @@
 [[headers]]
   for = "/*.css"
   [headers.values]
-    Content-Type = "text/css"
+    Content-Type = "text/css; charset=utf-8"
     Cache-Control = "public, max-age=31536000, immutable"
-
-[[headers]]
-  for = "/assets/js/*"
-  [headers.values]
-    Content-Type = "application/javascript"
-    Cache-Control = "public, max-age=31536000, immutable"
-
-[[headers]]
-  for = "/assets/css/*"
-  [headers.values]
-    Content-Type = "text/css"
-    Cache-Control = "public, max-age=31536000, immutable"
+    X-Content-Type-Options = "nosniff"
 
 [[headers]]
   for = "/assets/*"
   [headers.values]
     Cache-Control = "public, max-age=31536000, immutable"
+
+# Handle JavaScript modules specifically
+[[headers]]
+  for = "**/*-*.js"
+  [headers.values]
+    Content-Type = "application/javascript; charset=utf-8"
+    Cache-Control = "public, max-age=31536000, immutable"
+    X-Content-Type-Options = "nosniff"
 
 [[redirects]]
   from = "/*"
