@@ -1,0 +1,12 @@
+User-agent: *
+Allow: /
+Sitemap: https://exorit.netlify.app/sitemap.xml
+
+# Prevent blocking of assets
+Allow: *.css
+Allow: *.js
+Allow: *.jpg
+Allow: *.jpeg
+Allow: *.png
+Allow: *.gif
+Allow: *.svg
