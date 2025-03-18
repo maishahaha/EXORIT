@@ -27,22 +27,22 @@ const teamMembers: TeamMember[] = [
     }
   },
   {
-    name: "Team Member 2",
-    role: "Position",
-    image: "/team/placeholder.jpg",
-    bio: "Brief description about team member 2.",
+    name: "Golam Tawhid Fahad",
+    role: "Backend Developer",
+    image: "/team/Golam_Tawhid.jpg",
+    bio: "Backend developer with a focus on building scalable and efficient systems.",
     socials: {
-      linkedin: "#",
+      linkedin: "https://www.linkedin.com/in/g-t-fahad/",
       github: "#"
     }
   },
   {
-    name: "Team Member 3",
-    role: "Position",
-    image: "/team/placeholder.jpg",
-    bio: "Brief description about team member 3.",
+    name: "Maisha Iffat Chowdhury",
+    role: "Frontend Developer",
+    image: "/team/image.png",
+    bio: "Creative frontend developer with a knack for building user-friendly interfaces.",
     socials: {
-      linkedin: "#",
+      linkedin: "https://www.linkedin.com/in/maisha-iffat-chowdhury",
       github: "#"
     }
   }
