@@ -3,19 +3,16 @@ import react from '@vitejs/plugin-react'
 
 export default defineConfig({
   plugins: [react()],
-  base: '/',
+  base: './',
   build: {
     outDir: 'dist',
     assetsDir: 'assets',
     sourcemap: false,
     minify: 'terser',
-    modulePreload: true,
+    manifest: true,
     rollupOptions: {
       output: {
         format: 'es',
-        generatedCode: {
-          constBindings: true
-        },
         manualChunks: (id) => {
           if (id.includes('node_modules')) {
             if (id.includes('react')) {
