@@ -24,14 +24,14 @@ const Button = ({
   type = 'button',
   disabled = false
 }: ButtonProps) => {
-  // Base styles
-  const baseStyles = 'inline-flex items-center justify-center font-medium rounded-md transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2'
+  // Base styles - added display and border styles
+  const baseStyles = 'inline-flex items-center justify-center font-medium rounded-md transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 border-2'
   
   // Variant styles
   const variantStyles = {
-    primary: 'bg-primary text-white hover:bg-primary/90 shadow-lg hover:shadow-xl',
-    secondary: 'bg-secondary text-white hover:bg-secondary/90 shadow-md hover:shadow-lg',
-    outline: 'border-2 border-primary text-primary hover:bg-primary hover:text-white'
+    primary: 'bg-primary border-primary text-white hover:bg-primary/90 hover:text-white shadow-lg hover:shadow-xl',
+    secondary: 'bg-secondary border-secondary text-white hover:bg-secondary/90 hover:text-white shadow-md hover:shadow-lg',
+    outline: 'bg-transparent border-primary text-primary hover:bg-primary hover:text-white'
   }
   
   // Size styles
@@ -44,7 +44,10 @@ const Button = ({
   // Disabled styles
   const disabledStyles = disabled ? 'opacity-50 cursor-not-allowed pointer-events-none' : ''
   
-  const buttonClasses = `${baseStyles} ${variantStyles[variant]} ${sizeStyles[size]} ${disabledStyles} ${className}`
+  // If custom className is provided, use it with base styles
+  const buttonClasses = className 
+    ? `${baseStyles} ${sizeStyles[size]} ${disabledStyles} ${className}`
+    : `${baseStyles} ${variantStyles[variant]} ${sizeStyles[size]} ${disabledStyles}`
   
   // Render based on link type (internal, external, or button)
   if (to) {
