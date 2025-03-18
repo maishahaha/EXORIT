@@ -23,11 +23,10 @@ export default defineConfig({
           }
         },
         assetFileNames: (assetInfo) => {
-          let extType = assetInfo.name.split('.').at(1);
-          if (/png|jpe?g|svg|gif|tiff|bmp|ico/i.test(extType)) {
-            extType = 'img';
-          }
-          return `assets/${extType}/[name]-[hash][extname]`;
+          const name = assetInfo.name || '';
+          const extType = name.split('.').at(1) || 'asset';
+          const finalExtType = /png|jpe?g|svg|gif|tiff|bmp|ico/i.test(extType) ? 'img' : extType;
+          return `assets/${finalExtType}/[name]-[hash][extname]`;
         },
         chunkFileNames: 'assets/js/[name]-[hash].js',
         entryFileNames: 'assets/js/[name]-[hash].js',
