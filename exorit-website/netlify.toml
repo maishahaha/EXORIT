@@ -12,14 +12,7 @@
   status = 200
   force = false
 
-# Set correct MIME types for all files in assets/css/
-[[headers]]
-  for = "/assets/css/*"
-  [headers.values]
-    Content-Type = "text/css"
-
-# Set correct MIME types for all files in assets/js/
-[[headers]]
-  for = "/assets/js/*"
-  [headers.values]
-    Content-Type = "application/javascript" 
+# Apply Edge Function to all static assets
+[[edge_functions]]
+  function = "set-content-type"
+  path = "/assets/*" 
