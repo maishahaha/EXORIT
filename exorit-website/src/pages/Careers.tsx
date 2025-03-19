@@ -1,5 +1,5 @@
-import { useState } from 'react'
-import { motion } from 'framer-motion'
+import { useState, useMemo } from 'react'
+import { motion, AnimatePresence } from 'framer-motion'
 import Button from '../components/Button'
 
 // Job listing data
@@ -133,13 +133,19 @@ const CareersPage = () => {
     resume: null as File | null
   })
 
-  // Get unique departments for filter
-  const departments = ['All Departments', ...new Set(jobListings.map(job => job.department))]
+  // Get unique departments for filter using useMemo
+  const departments = useMemo(() => {
+    const uniqueDepartments = Array.from(new Set(jobListings.map(job => job.department)))
+    return ['All Departments', ...uniqueDepartments]
+  }, [])
   
-  // Filter jobs by department
-  const filteredJobs = filter === 'All Departments' 
-    ? jobListings 
-    : jobListings.filter(job => job.department === filter)
+  // Filter jobs directly from jobListings each time
+  const filteredJobs = useMemo(() => {
+    console.log("Filtering with department:", filter)
+    return filter === 'All Departments' 
+      ? jobListings 
+      : jobListings.filter(job => job.department === filter)
+  }, [filter])
 
   // Handle form input change
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -178,7 +184,7 @@ const CareersPage = () => {
 
   const itemVariants = {
     hidden: { opacity: 0, y: 20 },
-    visible: { opacity: 1, y: 0, transition: { duration: 0.5 } }
+    visible: { opacity: 1, y: 0, transition: { duration: 0.6 } }
   }
 
   return (
@@ -336,17 +342,18 @@ const CareersPage = () => {
               className="h-1 bg-primary mx-auto mb-8"
             ></motion.div>
           </div>
-
+          
+          {/* Department filter buttons */}
           <div className="mb-8 flex justify-center">
-            <div className="bg-white rounded-lg shadow-md p-1 inline-flex">
+            <div className="bg-gray-100 p-2 rounded-lg inline-flex flex-wrap gap-2 justify-center shadow-sm">
               {departments.map(dept => (
                 <button
                   key={dept}
                   onClick={() => setFilter(dept)}
-                  className={`px-4 py-2 rounded-md text-sm font-medium transition-all duration-300 ${
+                  className={`px-5 py-2.5 rounded-md text-sm font-medium transition-all duration-300 ${
                     filter === dept
                       ? 'bg-primary text-white shadow-md'
-                      : 'text-gray-700 hover:bg-gray-100'
+                      : 'bg-white text-gray-700 hover:bg-gray-50 shadow'
                   }`}
                 >
                   {dept}
@@ -355,97 +362,115 @@ const CareersPage = () => {
             </div>
           </div>
 
-          <motion.div
+          <motion.div 
             variants={containerVariants}
             initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
+            animate="visible"
             className="space-y-6"
           >
-            {filteredJobs.map(job => (
-              <motion.div
-                key={job.id}
-                variants={itemVariants}
-                className={`bg-white rounded-lg shadow-md overflow-hidden transition-all duration-300 ${
-                  selectedJob === job.id ? 'ring-2 ring-primary' : ''
-                }`}
-              >
-                <div 
-                  className="p-6 cursor-pointer"
-                  onClick={() => setSelectedJob(selectedJob === job.id ? null : job.id)}
+            <AnimatePresence mode="wait">
+              {filteredJobs.map(job => (
+                <motion.div
+                  layout
+                  key={job.id}
+                  variants={itemVariants}
+                  initial="hidden"
+                  animate="visible"
+                  exit={{ opacity: 0, y: 10 }}
+                  className={`bg-white rounded-lg shadow-md overflow-hidden transition-all duration-300 ${
+                    selectedJob === job.id ? 'ring-2 ring-primary' : ''
+                  }`}
                 >
-                  <div className="flex flex-col md:flex-row md:items-center justify-between mb-4">
-                    <h3 className="text-xl font-bold text-gray-900">{job.title}</h3>
-                    <div className="flex flex-wrap gap-2 mt-2 md:mt-0">
-                      <span className="bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded-full">
-                        {job.department}
-                      </span>
-                      <span className="bg-green-100 text-green-800 text-xs px-2 py-1 rounded-full">
-                        {job.type}
-                      </span>
-                      <span className="bg-gray-100 text-gray-800 text-xs px-2 py-1 rounded-full">
-                        {job.location}
-                      </span>
+                  <div 
+                    className="p-6 cursor-pointer"
+                    onClick={() => setSelectedJob(selectedJob === job.id ? null : job.id)}
+                  >
+                    <div className="flex flex-col md:flex-row md:items-center justify-between mb-4">
+                      <h3 className="text-xl font-bold text-gray-900">{job.title}</h3>
+                      <div className="flex flex-wrap gap-2 mt-2 md:mt-0">
+                        <span className="bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded-full">
+                          {job.department}
+                        </span>
+                        <span className="bg-green-100 text-green-800 text-xs px-2 py-1 rounded-full">
+                          {job.type}
+                        </span>
+                        <span className="bg-gray-100 text-gray-800 text-xs px-2 py-1 rounded-full">
+                          {job.location}
+                        </span>
+                      </div>
+                    </div>
+                    <p className="text-gray-600">{job.description}</p>
+                    <div className="flex items-center mt-4 text-primary font-medium">
+                      <span>{selectedJob === job.id ? 'Hide Details' : 'View Details'}</span>
+                      <svg 
+                        className={`ml-2 h-5 w-5 transform transition-transform ${
+                          selectedJob === job.id ? 'rotate-180' : ''
+                        }`} 
+                        fill="none" 
+                        viewBox="0 0 24 24" 
+                        stroke="currentColor"
+                      >
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7" />
+                      </svg>
                     </div>
                   </div>
-                  <p className="text-gray-600">{job.description}</p>
-                  <div className="flex items-center mt-4 text-primary font-medium">
-                    <span>{selectedJob === job.id ? 'Hide Details' : 'View Details'}</span>
-                    <svg 
-                      className={`ml-2 h-5 w-5 transform transition-transform ${
-                        selectedJob === job.id ? 'rotate-180' : ''
-                      }`} 
-                      fill="none" 
-                      viewBox="0 0 24 24" 
-                      stroke="currentColor"
-                    >
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7" />
-                    </svg>
-                  </div>
-                </div>
 
-                {selectedJob === job.id && (
-                  <div className="px-6 pb-6 pt-2 border-t border-gray-200">
-                    <div className="mb-6">
-                      <h4 className="text-lg font-semibold text-gray-900 mb-3">Requirements</h4>
-                      <ul className="list-disc list-inside space-y-2 text-gray-600">
-                        {job.requirements.map((req, index) => (
-                          <li key={index}>{req}</li>
-                        ))}
-                      </ul>
-                    </div>
+                  <AnimatePresence>
+                    {selectedJob === job.id && (
+                      <motion.div
+                        initial={{ opacity: 0, height: 0 }}
+                        animate={{ opacity: 1, height: "auto" }}
+                        exit={{ opacity: 0, height: 0 }}
+                        transition={{ duration: 0.3 }}
+                        className="px-6 pb-6 pt-2 border-t border-gray-200"
+                      >
+                        <div className="mb-6">
+                          <h4 className="text-lg font-semibold text-gray-900 mb-3">Requirements</h4>
+                          <ul className="list-disc list-inside space-y-2 text-gray-600">
+                            {job.requirements.map((req, index) => (
+                              <li key={index}>{req}</li>
+                            ))}
+                          </ul>
+                        </div>
 
-                    <div className="mb-6">
-                      <h4 className="text-lg font-semibold text-gray-900 mb-3">Responsibilities</h4>
-                      <ul className="list-disc list-inside space-y-2 text-gray-600">
-                        {job.responsibilities.map((resp, index) => (
-                          <li key={index}>{resp}</li>
-                        ))}
-                      </ul>
-                    </div>
+                        <div className="mb-6">
+                          <h4 className="text-lg font-semibold text-gray-900 mb-3">Responsibilities</h4>
+                          <ul className="list-disc list-inside space-y-2 text-gray-600">
+                            {job.responsibilities.map((resp, index) => (
+                              <li key={index}>{resp}</li>
+                            ))}
+                          </ul>
+                        </div>
 
-                    <Button 
-                      onClick={() => {
-                        setSelectedJob(job.id)
-                        setShowForm(true)
-                      }}
-                    >
-                      Apply for this Position
-                    </Button>
-                  </div>
-                )}
-              </motion.div>
-            ))}
+                        <Button 
+                          onClick={() => {
+                            setSelectedJob(job.id)
+                            setShowForm(true)
+                          }}
+                        >
+                          Apply for this Position
+                        </Button>
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
+                </motion.div>
+              ))}
 
-            {filteredJobs.length === 0 && (
-              <div className="text-center py-12">
-                <h3 className="text-xl text-gray-600 mb-4">No openings in this department at the moment.</h3>
-                <p className="text-gray-500 mb-6">Please check back later or browse our other departments.</p>
-                <Button onClick={() => setFilter('All Departments')} variant="secondary">
-                  Show All Departments
-                </Button>
-              </div>
-            )}
+              {filteredJobs.length === 0 && (
+                <motion.div
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  exit={{ opacity: 0 }}
+                  className="text-center py-12"
+                >
+                  <h3 className="text-xl text-gray-600 mb-4">No openings in this department at the moment.</h3>
+                  <p className="text-gray-500 mb-6">Please check back later or browse our other departments.</p>
+                  <Button onClick={() => setFilter('All Departments')} variant="secondary">
+                    Show All Departments
+                  </Button>
+                </motion.div>
+              )}
+            </AnimatePresence>
           </motion.div>
         </div>
       </section>

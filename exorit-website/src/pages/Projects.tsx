@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useMemo, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import Button from '../components/Button'
 
@@ -111,15 +111,18 @@ const ProjectsPage = () => {
   const [filteredProjects, setFilteredProjects] = useState(projectsData)
   const [selectedProject, setSelectedProject] = useState<null | typeof projectsData[0]>(null)
   
-  // Filter projects by category
-  const handleFilterClick = (category: string) => {
-    setActiveFilter(category)
-    
-    if (category === 'All') {
+  // Filter projects using useEffect to ensure it runs whenever activeFilter changes
+  useEffect(() => {
+    if (activeFilter === 'All') {
       setFilteredProjects(projectsData)
     } else {
-      setFilteredProjects(projectsData.filter(project => project.category === category))
+      setFilteredProjects(projectsData.filter(project => project.category === activeFilter))
     }
+  }, [activeFilter])
+  
+  // Handle filter click
+  const handleFilterClick = (category: string) => {
+    setActiveFilter(category)
   }
   
   // Animation variants
@@ -163,15 +166,15 @@ const ProjectsPage = () => {
       <section className="py-10 bg-white">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-wrap justify-center mb-8">
-            <div className="bg-gray-100 rounded-lg p-1 inline-flex">
+            <div className="bg-gray-100 p-2 rounded-lg inline-flex flex-wrap gap-2 justify-center shadow-sm">
               {categories.map(category => (
                 <button
                   key={category}
                   onClick={() => handleFilterClick(category)}
-                  className={`px-4 py-2 rounded-md text-sm font-medium transition-all duration-300 ${
+                  className={`px-5 py-2.5 rounded-md text-sm font-medium transition-all duration-300 ${
                     activeFilter === category
                       ? 'bg-primary text-white shadow-md'
-                      : 'text-gray-700 hover:bg-gray-200'
+                      : 'bg-white text-gray-700 hover:bg-gray-50 shadow'
                   }`}
                 >
                   {category}
