@@ -5,44 +5,21 @@
 [build.environment]
   NODE_VERSION = "20"
 
+# Handle SPA routing
 [[redirects]]
   from = "/*"
   to = "/index.html"
   status = 200
+  force = false
 
-# Global headers for all files
-[[headers]]
-  for = "/*"
-  [headers.values]
-    X-Frame-Options = "DENY"
-    X-XSS-Protection = "1; mode=block"
-
-# JavaScript files
-[[headers]]
-  for = "/*.js"
-  [headers.values]
-    Content-Type = "application/javascript"
-
-[[headers]]
-  for = "/assets/js/*.js"
-  [headers.values]
-    Content-Type = "application/javascript"
-
-# CSS files - simplified and more specific
+# Set correct MIME types for all files in assets/css/
 [[headers]]
   for = "/assets/css/*"
   [headers.values]
     Content-Type = "text/css"
-    Cache-Control = "public, max-age=31536000, immutable"
 
+# Set correct MIME types for all files in assets/js/
 [[headers]]
-  for = "/*.css"
+  for = "/assets/js/*"
   [headers.values]
-    Content-Type = "text/css"
-    Cache-Control = "public, max-age=31536000, immutable"
-
-[[headers]]
-  for = "/*.mjs"
-  [headers.values]
-    Content-Type = "application/javascript"
-    Cache-Control = "public, max-age=31536000, immutable"
+    Content-Type = "application/javascript" 
