@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion'
 import Button from '../components/Button'
 import WebAnimation from '../components/WebAnimation'
+import CodingWindow from '../components/CodingWindow'
 
 const Home = () => {
   return (
@@ -19,37 +20,40 @@ const Home = () => {
         <div className="absolute inset-0 z-20 pointer-events-auto">
           <WebAnimation />
         </div>
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-30">
-          <div className="max-w-3xl">
-            <motion.h1
-              initial={{ opacity: 0, y: -20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8 }}
-              className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6"
-            >
-              Innovative Software Solutions for the Modern World
-            </motion.h1>
-            <motion.p 
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.3 }}
-              className="text-lg md:text-xl text-gray-200 mb-8"
-            >
-              We build cutting-edge web and mobile applications that help businesses thrive in the digital landscape.
-            </motion.p>
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.6 }}
-              className="flex flex-wrap gap-4 justify-center"
-            >
-              <Button to="/contact" size="lg">
-                Get in Touch
-              </Button>
-              <Button to="/projects" variant="outline" size="lg">
-                View Our Work
-              </Button>
-            </motion.div>
+        <div className="container relative z-20 mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex flex-col md:flex-row items-center justify-between gap-12">
+            <div className="w-full md:w-1/2">
+              <motion.h1
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8 }}
+                className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6"
+              >
+                Innovative Software Solutions for the Modern World
+              </motion.h1>
+              <motion.p
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: 0.3 }}
+                className="text-lg text-gray-300 mb-8"
+              >
+                We build cutting-edge web and mobile applications that help businesses thrive in the digital landscape.
+              </motion.p>
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: 0.6 }}
+                className="flex flex-wrap justify-center gap-4"
+              >
+                <Button to="/contact" size="lg">
+                  Get in Touch
+                </Button>
+                <Button to="/projects" variant="outline" size="lg">
+                  View Our Work
+                </Button>
+              </motion.div>
+            </div>
+            <CodingWindow />
           </div>
         </div>
         <motion.div 
