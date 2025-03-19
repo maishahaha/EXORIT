@@ -183,11 +183,11 @@ const AboutPage = () => {
               viewport={{ once: true }}
               variants={fadeIn}
               transition={{ duration: 0.6 }}
-              className="text-2xl font-bold text-center mb-8"
+              className="text-2xl font-bold text-center mb-12"
             >
               Core Values That Drive Us
             </motion.h3>
-            <div className="space-y-8">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
               {[
                 {
                   value: "Excellence",
@@ -217,10 +217,10 @@ const AboutPage = () => {
                   viewport={{ once: true }}
                   variants={fadeIn}
                   transition={{ duration: 0.6, delay: index * 0.1 }}
-                  className="flex gap-4"
+                  className="bg-white rounded-lg p-6 shadow-md hover:shadow-lg transition-all duration-300 flex"
                 >
-                  <div className="flex-shrink-0 mt-1">
-                    <div className="h-6 w-6 rounded-full bg-primary flex items-center justify-center text-white text-sm">
+                  <div className="flex-shrink-0 mr-4">
+                    <div className="h-10 w-10 rounded-full bg-primary flex items-center justify-center text-white font-bold">
                       {index + 1}
                     </div>
                   </div>
