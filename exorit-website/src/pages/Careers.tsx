@@ -508,7 +508,7 @@ const CareersPage = () => {
                   value={formData.name}
                   onChange={handleInputChange}
                   required
-                  className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-primary focus:border-primary"
+                  className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-primary focus:border-primary text-gray-900 bg-gray-50"
                   placeholder="Enter your full name"
                 />
               </div>
@@ -524,7 +524,7 @@ const CareersPage = () => {
                   value={formData.email}
                   onChange={handleInputChange}
                   required
-                  className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-primary focus:border-primary"
+                  className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-primary focus:border-primary text-gray-900 bg-gray-50"
                   placeholder="Enter your email address"
                 />
               </div>
@@ -539,7 +539,7 @@ const CareersPage = () => {
                   name="phone"
                   value={formData.phone}
                   onChange={handleInputChange}
-                  className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-primary focus:border-primary"
+                  className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-primary focus:border-primary text-gray-900 bg-gray-50"
                   placeholder="Enter your phone number"
                 />
               </div>
@@ -554,7 +554,7 @@ const CareersPage = () => {
                   value={formData.message}
                   onChange={handleInputChange}
                   rows={4}
-                  className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-primary focus:border-primary"
+                  className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-primary focus:border-primary text-gray-900 bg-gray-50"
                   placeholder="Tell us why you're interested in this position and how your experience relates"
                 />
               </div>
@@ -570,7 +570,7 @@ const CareersPage = () => {
                   onChange={handleFileChange}
                   accept=".pdf,.doc,.docx"
                   required
-                  className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-primary focus:border-primary"
+                  className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-primary focus:border-primary text-gray-900 bg-gray-50"
                 />
               </div>
 
