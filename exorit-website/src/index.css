@@ -31,6 +31,13 @@ html, body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+/* Dark mode variables */
+.dark {
+  --text-color: #f3f4f6;
+  --bg-color: #111827;
+  color-scheme: dark;
+}
+
 a {
   font-weight: 500;
   text-decoration: inherit;
@@ -47,6 +54,8 @@ body {
   min-width: 100vw;
   min-height: 100vh;
   overflow-x: hidden;
+  @apply dark:bg-gray-900 dark:text-gray-100;
+  transition: background-color 0.3s ease-in-out;
 }
 
 h1 {
@@ -65,16 +74,32 @@ button {
   cursor: pointer;
   transition: all 0.3s ease;
   color: inherit;
+  @apply dark:bg-gray-800;
 }
 
 button:hover {
   border-color: #646cff;
   color: inherit;
+  @apply dark:bg-gray-700;
+  color: white !important; /* Ensure text remains visible on hover */
 }
 
 button:focus,
 button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
+}
+
+/* Special case for the dark mode toggle button */
+button.dark-mode-toggle {
+  background: transparent;
+  border: none;
+  padding: 0;
+  min-width: auto;
+}
+
+button.dark-mode-toggle:hover {
+  background: transparent;
+  border: none;
 }
 
 @media (prefers-color-scheme: light) {
@@ -100,6 +125,14 @@ button:focus-visible {
     background-color: #e5e5e5;
     color: #213547;
   }
+}
+
+.dark button {
+  @apply bg-gray-700;
+}
+
+.dark button:hover {
+  @apply bg-gray-600 border-blue-400;
 }
 
 @layer base {

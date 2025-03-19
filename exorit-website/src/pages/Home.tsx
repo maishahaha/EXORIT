@@ -8,9 +8,9 @@ const Home = () => {
     <>
       {/* Hero Section */}
       <section className="relative h-screen flex items-center overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-r from-gray-900 to-blue-900 opacity-80 z-0"></div>
+        <div className="absolute inset-0 bg-gradient-to-r from-gray-900 to-blue-900 opacity-80 z-0 dark:from-gray-800 dark:to-gray-700"></div>
         <div 
-          className="absolute inset-0 z-10 opacity-20"
+          className="absolute inset-0 z-10 opacity-20 dark:opacity-30"
           style={{
             backgroundImage: 'url(https://images.unsplash.com/photo-1504384308090-c894fdcc538d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80)',
             backgroundSize: 'cover',
@@ -27,7 +27,7 @@ const Home = () => {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8 }}
-                className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6"
+                className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 dark:text-gray-100"
               >
                 Innovative Software Solutions for the Modern World
               </motion.h1>
@@ -35,7 +35,7 @@ const Home = () => {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: 0.3 }}
-                className="text-lg text-gray-300 mb-8"
+                className="text-lg text-gray-300 mb-8 dark:text-gray-400"
               >
                 We build cutting-edge web and mobile applications that help businesses thrive in the digital landscape.
               </motion.p>
@@ -64,7 +64,7 @@ const Home = () => {
         >
           <a 
             href="#about" 
-            className="flex flex-col items-center text-white"
+            className="flex flex-col items-center text-white dark:text-gray-300"
             aria-label="Scroll down"
           >
             <span className="text-sm mb-2">Scroll Down</span>
@@ -76,7 +76,7 @@ const Home = () => {
       </section>
 
       {/* About Section */}
-      <section id="about" className="py-20 bg-white">
+      <section id="about" className="py-20 bg-white dark:bg-gray-900">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-4xl mx-auto text-center">
             <motion.h2
@@ -84,7 +84,7 @@ const Home = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.8 }}
-              className="text-3xl md:text-4xl font-bold text-gray-900 mb-6"
+              className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-gray-100 mb-6"
             >
               About EXORIT
             </motion.h2>
@@ -100,7 +100,7 @@ const Home = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.8, delay: 0.4 }}
-              className="text-lg text-gray-700 mb-8"
+              className="text-lg text-gray-700 dark:text-gray-300 mb-8"
             >
               EXORIT is a forward-thinking software company dedicated to crafting innovative digital solutions 
               for businesses of all sizes. Founded in 2015, we've grown into a team of passionate developers,
@@ -111,7 +111,7 @@ const Home = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.8, delay: 0.6 }}
-              className="text-lg text-gray-700 mb-10"
+              className="text-lg text-gray-700 dark:text-gray-300 mb-10"
             >
               Our mission is to bridge the gap between complex technology and business needs, 
               delivering software that not only solves problems but also creates new opportunities 
@@ -132,14 +132,14 @@ const Home = () => {
       </section>
 
       {/* Services Preview */}
-      <section className="py-20 bg-gray-50">
+      <section className="py-20 bg-gray-50 dark:bg-gray-800">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <motion.h2
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
-            className="text-3xl md:text-4xl font-bold text-center text-gray-900 mb-16"
+            className="text-3xl md:text-4xl font-bold text-center text-gray-900 dark:text-gray-100 mb-16"
           >
             What We Offer
           </motion.h2>
@@ -180,11 +180,11 @@ const Home = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.7, delay: index * 0.2 }}
-                className="bg-white rounded-lg p-8 shadow-lg hover:shadow-xl transition-shadow duration-300"
+                className="bg-white dark:bg-gray-700 rounded-lg p-8 shadow-lg hover:shadow-xl transition-shadow duration-300"
               >
                 <div className="mb-5">{service.icon}</div>
-                <h3 className="text-xl font-semibold text-gray-900 mb-3">{service.title}</h3>
-                <p className="text-gray-600 mb-5">{service.description}</p>
+                <h3 className="text-xl font-semibold text-gray-900 dark:text-gray-100 mb-3">{service.title}</h3>
+                <p className="text-gray-600 dark:text-gray-300 mb-5">{service.description}</p>
                 <Button to="/contact" variant="outline" size="sm">Learn More</Button>
               </motion.div>
             ))}

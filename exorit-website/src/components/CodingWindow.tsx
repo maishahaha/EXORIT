@@ -1,8 +1,10 @@
 import { motion } from 'framer-motion';
 import { useEffect, useState } from 'react';
+import { useTheme } from '../contexts/ThemeContext';
 
 const CodingWindow = () => {
   const [text, setText] = useState('');
+  const { darkMode } = useTheme();
   const codeSnippet = `// EXORIT Web Solutions
 class ExoritApp {
   constructor() {
@@ -56,10 +58,10 @@ app.deploy();`;
         duration: 0.8, 
         delay: 0.5
       }}
-      className="hidden lg:block bg-[#1e2a38] rounded-2xl w-[480px] backdrop-blur-lg bg-opacity-20 border border-gray-700 transform perspective-[1000px] hover:rotate-y-2 hover:-rotate-x-2 transition-all duration-300 shadow-[rgba(0,_0,_0,_0.4)_5px_5px_20px_0px,_rgba(0,_0,_0,_0.3)_-5px_-5px_20px_0px] hover:shadow-[rgba(0,_0,_0,_0.5)_8px_8px_24px_0px,_rgba(0,_0,_0,_0.4)_-8px_-8px_24px_0px] before:content-[''] before:absolute before:inset-0 before:bg-gradient-to-t before:from-white/10 before:to-transparent before:rounded-2xl"
+      className={`hidden lg:block ${darkMode ? 'bg-[#1e2a38]' : 'bg-[#2b3a4d]'} rounded-2xl w-[480px] backdrop-blur-lg bg-opacity-20 border ${darkMode ? 'border-gray-700' : 'border-gray-600'} transform perspective-[1000px] hover:rotate-y-2 hover:-rotate-x-2 transition-all duration-300 shadow-[rgba(0,_0,_0,_0.4)_5px_5px_20px_0px,_rgba(0,_0,_0,_0.3)_-5px_-5px_20px_0px] hover:shadow-[rgba(0,_0,_0,_0.5)_8px_8px_24px_0px,_rgba(0,_0,_0,_0.4)_-8px_-8px_24px_0px] before:content-[''] before:absolute before:inset-0 before:bg-gradient-to-t before:from-white/10 before:to-transparent before:rounded-2xl`}
     >
       {/* Window Header */}
-      <div className="flex items-center px-4 py-2 border-b border-gray-700 bg-[#1e2a38] bg-opacity-20 rounded-t-2xl transform preserve-3d">
+      <div className={`flex items-center px-4 py-2 border-b ${darkMode ? 'border-gray-700 bg-[#1e2a38]' : 'border-gray-600 bg-[#2b3a4d]'} bg-opacity-20 rounded-t-2xl transform preserve-3d`}>
         <div className="flex space-x-2">
           <div className="w-3 h-3 bg-red-500 rounded-full"></div>
           <div className="w-3 h-3 bg-yellow-500 rounded-full"></div>
@@ -69,7 +71,7 @@ app.deploy();`;
       </div>
       
       {/* Code Content */}
-      <div className="p-6 font-mono text-[13px] bg-[#1e2a38] bg-opacity-20 rounded-b-2xl">
+      <div className={`p-6 font-mono text-[13px] ${darkMode ? 'bg-[#1e2a38]' : 'bg-[#2b3a4d]'} bg-opacity-20 rounded-b-2xl`}>
         <pre className="overflow-x-hidden text-gray-300" style={{ textAlign: 'left' }}>
           <code dangerouslySetInnerHTML={{ __html: text }} className="block" />
           <motion.span

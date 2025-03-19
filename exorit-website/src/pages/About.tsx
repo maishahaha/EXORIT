@@ -43,7 +43,7 @@ const AboutPage = () => {
       </section>
 
       {/* Our Story */}
-      <section className="py-20 bg-white">
+      <section className="py-20 bg-white dark:bg-gray-900">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col lg:flex-row gap-12 items-center">
             <motion.div 
@@ -54,20 +54,20 @@ const AboutPage = () => {
               transition={{ duration: 0.8 }}
               className="lg:w-1/2"
             >
-              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">Our Story</h2>
+              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-gray-100 mb-6">Our Story</h2>
               <div className="h-1 w-20 bg-primary mb-8"></div>
-              <p className="text-lg text-gray-700 mb-6">
+              <p className="text-lg text-gray-700 dark:text-gray-300 mb-6">
                 Founded in 2015, EXORIT started as a small team of passionate developers with a shared vision: 
                 to make cutting-edge technology accessible to businesses of all sizes. What began as a boutique 
                 development shop has grown into a comprehensive software company serving clients worldwide.
               </p>
-              <p className="text-lg text-gray-700 mb-6">
+              <p className="text-lg text-gray-700 dark:text-gray-300 mb-6">
                 Over the years, we've expanded our team and expertise, building a track record of successful 
                 projects across various industries including finance, healthcare, education, and e-commerce. 
                 Our solutions have helped startups launch innovative products and established businesses 
                 modernize their digital infrastructure.
               </p>
-              <p className="text-lg text-gray-700">
+              <p className="text-lg text-gray-700 dark:text-gray-300">
                 Today, EXORIT continues to push the boundaries of what's possible in software development, 
                 combining technical excellence with creative thinking to craft solutions that address 
                 real-world challenges.
@@ -92,7 +92,7 @@ const AboutPage = () => {
       </section>
 
       {/* Vision, Mission & Values */}
-      <section className="py-20 bg-gray-50">
+      <section className="py-20 bg-gray-50 dark:bg-gray-800">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-3xl mx-auto mb-16">
             <motion.h2
@@ -101,7 +101,7 @@ const AboutPage = () => {
               viewport={{ once: true }}
               variants={fadeIn}
               transition={{ duration: 0.8 }}
-              className="text-3xl md:text-4xl font-bold text-gray-900 mb-6"
+              className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-gray-100 mb-6"
             >
               Vision, Mission & Core Values
             </motion.h2>
@@ -121,16 +121,16 @@ const AboutPage = () => {
               viewport={{ once: true }}
               variants={fadeIn}
               transition={{ duration: 0.6 }}
-              className="bg-white rounded-lg p-8 shadow-lg hover:shadow-xl transition-all duration-300"
+              className="bg-white dark:bg-gray-700 rounded-lg p-8 shadow-lg hover:shadow-xl transition-all duration-300"
             >
-              <div className="bg-blue-50 p-3 inline-flex rounded-full mb-6">
+              <div className="bg-blue-50 dark:bg-gray-600 p-3 inline-flex rounded-full mb-6">
                 <svg className="h-8 w-8 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
                 </svg>
               </div>
-              <h3 className="text-2xl font-bold text-gray-900 mb-4">Our Vision</h3>
-              <p className="text-gray-700">
+              <h3 className="text-2xl font-bold text-gray-900 dark:text-gray-100 mb-4">Our Vision</h3>
+              <p className="text-gray-700 dark:text-gray-300">
                 To be at the forefront of technological innovation, creating software solutions that empower 
                 businesses to reach their full potential in the digital era.
               </p>
@@ -142,15 +142,15 @@ const AboutPage = () => {
               viewport={{ once: true }}
               variants={fadeIn}
               transition={{ duration: 0.6, delay: 0.2 }}
-              className="bg-white rounded-lg p-8 shadow-lg hover:shadow-xl transition-all duration-300"
+              className="bg-white dark:bg-gray-700 rounded-lg p-8 shadow-lg hover:shadow-xl transition-all duration-300"
             >
-              <div className="bg-blue-50 p-3 inline-flex rounded-full mb-6">
+              <div className="bg-blue-50 dark:bg-gray-600 p-3 inline-flex rounded-full mb-6">
                 <svg className="h-8 w-8 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
                 </svg>
               </div>
-              <h3 className="text-2xl font-bold text-gray-900 mb-4">Our Mission</h3>
-              <p className="text-gray-700">
+              <h3 className="text-2xl font-bold text-gray-900 dark:text-gray-100 mb-4">Our Mission</h3>
+              <p className="text-gray-700 dark:text-gray-300">
                 To deliver innovative, high-quality software solutions that solve complex challenges, drive growth, 
                 and create meaningful value for our clients and their customers.
               </p>
@@ -162,15 +162,15 @@ const AboutPage = () => {
               viewport={{ once: true }}
               variants={fadeIn}
               transition={{ duration: 0.6, delay: 0.4 }}
-              className="bg-white rounded-lg p-8 shadow-lg hover:shadow-xl transition-all duration-300"
+              className="bg-white dark:bg-gray-700 rounded-lg p-8 shadow-lg hover:shadow-xl transition-all duration-300"
             >
-              <div className="bg-blue-50 p-3 inline-flex rounded-full mb-6">
+              <div className="bg-blue-50 dark:bg-gray-600 p-3 inline-flex rounded-full mb-6">
                 <svg className="h-8 w-8 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
                 </svg>
               </div>
-              <h3 className="text-2xl font-bold text-gray-900 mb-4">Our Values</h3>
-              <p className="text-gray-700">
+              <h3 className="text-2xl font-bold text-gray-900 dark:text-gray-100 mb-4">Our Values</h3>
+              <p className="text-gray-700 dark:text-gray-300">
                 Excellence, integrity, innovation, collaboration, and client-centricity guide everything we do at EXORIT, 
                 shaping how we approach our work and build relationships.
               </p>
@@ -219,7 +219,7 @@ const AboutPage = () => {
                   viewport={{ once: true }}
                   variants={fadeIn}
                   transition={{ duration: 0.6, delay: index * 0.1 }}
-                  className="bg-white rounded-lg p-6 shadow-md hover:shadow-lg transition-all duration-300 flex"
+                  className="bg-white dark:bg-gray-700 rounded-lg p-6 shadow-md hover:shadow-lg transition-all duration-300 flex"
                 >
                   <div className="flex-shrink-0 mr-4">
                     <div className="h-10 w-10 rounded-full bg-primary flex items-center justify-center text-white font-bold">
@@ -227,8 +227,8 @@ const AboutPage = () => {
                     </div>
                   </div>
                   <div>
-                    <h4 className="text-xl font-semibold text-gray-900 mb-2">{item.value}</h4>
-                    <p className="text-gray-700">{item.description}</p>
+                    <h4 className="text-xl font-semibold text-gray-900 dark:text-gray-100 mb-2">{item.value}</h4>
+                    <p className="text-gray-700 dark:text-gray-300">{item.description}</p>
                   </div>
                 </motion.div>
               ))}
