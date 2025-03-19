@@ -15,7 +15,6 @@ function getPlatformPackage() {
   if (platform === 'linux') {
     // Check for musl vs glibc (Alpine Linux vs other Linux distros)
     try {
-      const ldPath = execSync('which ldconfig').toString().trim();
       const isMusl = execSync('ldd --version 2>&1 || true').toString().includes('musl');
       
       if (isMusl) {
