@@ -22,7 +22,13 @@ export default defineConfig({
             return 'vendor';
           }
         },
-        assetFileNames: 'assets/[ext]/[name]-[hash][extname]',
+        assetFileNames: (assetInfo) => {
+          if (!assetInfo.name) return 'assets/[name]-[hash][extname]';
+          if (assetInfo.name.endsWith('.css')) {
+            return 'assets/css/[name]-[hash][extname]';
+          }
+          return 'assets/[ext]/[name]-[hash][extname]';
+        },
         chunkFileNames: 'assets/js/[name]-[hash].js',
         entryFileNames: 'assets/js/[name]-[hash].js',
       },
