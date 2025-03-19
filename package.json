@@ -1,17 +1,17 @@
 {
-  // ...existing code...
+
   "dependencies": {
-    // ...existing code...
-    "@rollup/rollup-linux-x64-gnu": "latest",
-    // ...existing code...
+
+    "@rollup/rollup-linux-x64-gnu": "latest"
+
   },
   "devDependencies": {
-    // ...existing code...
+
   },
   "scripts": {
-    // ...existing code...
-    "postinstall": "node ./scripts/platform-check.js",
-    // ...existing code...
+
+    "postinstall": "node ./scripts/platform-check.js"
+
   }
-  // ...existing code...
+
 }
