@@ -2,16 +2,20 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { useTheme } from '../contexts/ThemeContext';
 
-const DarkModeToggle = () => {
+interface DarkModeToggleProps {
+  className?: string;
+}
+
+const DarkModeToggle: React.FC<DarkModeToggleProps> = ({ className = '' }) => {
   const { darkMode, toggleDarkMode } = useTheme();
 
   return (
     <motion.button
       onClick={toggleDarkMode}
-      className="relative w-10 h-5 rounded-full flex items-center 
+      className={`relative w-10 h-5 rounded-full flex items-center 
       transition-colors duration-300 ease-in-out mr-2
       focus:outline-none bg-gray-300 dark:bg-blue-900
-      border-none shadow-none hover:border-none"
+      border-none shadow-none hover:border-none ${className}`}
       whileTap={{ scale: 0.95 }}
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}

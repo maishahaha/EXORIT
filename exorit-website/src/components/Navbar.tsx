@@ -1,7 +1,21 @@
-import { useState, useEffect } from 'react'
-import { Link, NavLink } from 'react-router-dom'
-import { AnimatePresence, motion } from 'framer-motion'
+import { useState, useEffect } from 'react';
+import { Link, NavLink } from 'react-router-dom';
+import { AnimatePresence, motion } from 'framer-motion';
 import DarkModeToggle from './DarkModeToggle';
+
+interface NavItem {
+  name: string;
+  path: string;
+}
+
+const navItems: NavItem[] = [
+  { name: 'Home', path: '/' },
+  { name: 'About', path: '/about' },
+  { name: 'Projects', path: '/projects' },
+  { name: 'Team', path: '/team' },
+  { name: 'Careers', path: '/careers' },
+  { name: 'Contact', path: '/contact' }
+];
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false)
@@ -65,19 +79,12 @@ const Navbar = () => {
             <div className="flex items-center space-x-4">
               <nav className="hidden md:flex flex-1 justify-center">
                 <ul className="flex space-x-8">
-                  {[
-                    { name: 'Home', path: '/' },
-                    { name: 'About', path: '/about' },
-                    { name: 'Projects', path: '/projects' },
-                    { name: 'Team', path: '/team' },
-                    { name: 'Careers', path: '/careers' },
-                    { name: 'Contact', path: '/contact' }
-                  ].map((item) => (
+                  {navItems.map((item) => (
                     <li key={item.name}>
                       <NavLink 
                         to={item.path}
                         onClick={handleNavClick}
-                        className={({ isActive }) => 
+                        className={({ isActive }: { isActive: boolean }) => 
                           `text-base font-medium transition-all duration-300 ${
                             isActive 
                               ? 'text-primary border-b-2 border-primary pb-1' 
@@ -155,19 +162,12 @@ const Navbar = () => {
             className="md:hidden bg-white dark:bg-gray-900 shadow-lg w-full"
           >
             <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
-              {[
-                { name: 'Home', path: '/' },
-                { name: 'About', path: '/about' },
-                { name: 'Projects', path: '/projects' },
-                { name: 'Team', path: '/team' },
-                { name: 'Careers', path: '/careers' },
-                { name: 'Contact', path: '/contact' }
-              ].map((item) => (
+              {navItems.map((item) => (
                 <NavLink
                   key={item.name}
                   to={item.path}
                   onClick={handleNavClick}
-                  className={({ isActive }) =>
+                  className={({ isActive }: { isActive: boolean }) =>
                     `block px-3 py-2 rounded-md text-base font-medium ${
                       isActive
                         ? 'text-primary bg-gray-50 dark:bg-gray-800'
