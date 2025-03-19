@@ -1,109 +1,40 @@
 [build]
-  base = "exorit-website"
-  command = "npm run postinstall && npm run build"
+  command = "npm run build"
   publish = "dist"
-  functions = "netlify/functions"
-  
+
 [build.environment]
   NODE_VERSION = "20"
-  NPM_FLAGS = "--no-optional"
-  ROLLUP_SKIP_NODE_RESOLVE = "true"
 
-[build.processing]
-  skip_processing = false
-[build.processing.css]
-  bundle = true
-  minify = true
-[build.processing.js]
-  bundle = true
-  minify = true
-[build.processing.html]
-  pretty_urls = true
-[build.processing.images]
-  compress = true
-
-[[headers]]
-  for = "/*"
-  [headers.values]
-    X-Frame-Options = "DENY"
-    X-XSS-Protection = "1; mode=block"
-    X-Content-Type-Options = "nosniff"
-    Referrer-Policy = "strict-origin-when-cross-origin"
-    Strict-Transport-Security = "max-age=31536000; includeSubDomains"
-    Content-Security-Policy = "upgrade-insecure-requests"
-    Cache-Control = "public, max-age=31536000"
-
-[[headers]]
-  for = "/*.js"
-  [headers.values]
-    Content-Type = "application/javascript"
-    Cache-Control = "public, max-age=31536000, immutable"
-
-[[headers]]
-  for = "/*.mjs"
-  [headers.values]
-    Content-Type = "application/javascript"
-    Cache-Control = "public, max-age=31536000, immutable"
-
-[[headers]]
-  for = "/*.css"
-  [headers.values]
-    Content-Type = "text/css"
-    Cache-Control = "public, max-age=31536000, immutable"
-
-[[headers]]
-  for = "/assets/js/*"
-  [headers.values]
-    Content-Type = "application/javascript; charset=utf-8"
-    X-Content-Type-Options = "nosniff"
-    Cache-Control = "public, max-age=31536000, immutable"
-
-[[headers]]
-  for = "/assets/css/*"
-  [headers.values]
-    Content-Type = "text/css; charset=utf-8"
-    X-Content-Type-Options = "nosniff"
-    Cache-Control = "public, max-age=31536000, immutable"
-
-[[headers]]
-  for = "/assets/*"
-  [headers.values]
-    Cache-Control = "public, max-age=31536000, immutable"
-
-[[headers]]
-  for = "/assets/*-*.js"
-  [headers.values]
-    Content-Type = "application/javascript; charset=utf-8"
-    X-Content-Type-Options = "nosniff"
-    Cache-Control = "public, max-age=31536000, immutable"
-
-[[headers]]
-  for = "/assets/*-*.css"
-  [headers.values]
-    Content-Type = "text/css; charset=utf-8"
-    X-Content-Type-Options = "nosniff"
-    Cache-Control = "public, max-age=31536000, immutable"
-
+# Critical asset handling - these routes must come before the SPA fallback
 [[redirects]]
   from = "/assets/*"
   to = "/assets/:splat"
   status = 200
   force = true
 
-[[redirects]]
-  from = "/assets/*-*.*"
-  to = "/assets/:splat"
-  status = 200
-  force = true
+# Set correct MIME types for specific file extensions
+[[headers]]
+  for = "*.js"
+  [headers.values]
+    Content-Type = "application/javascript; charset=utf-8"
 
+[[headers]]
+  for = "*.css"
+  [headers.values]
+    Content-Type = "text/css; charset=utf-8"
+
+[[headers]]
+  for = "/assets/js/*.js"
+  [headers.values]
+    Content-Type = "application/javascript; charset=utf-8"
+
+[[headers]]
+  for = "/assets/css/*.css"
+  [headers.values]
+    Content-Type = "text/css; charset=utf-8"
+
+# SPA fallback - must come after critical asset handling
 [[redirects]]
   from = "/*"
   to = "/index.html"
   status = 200
-  force = false
-
-[[redirects]]
-  from = "http://*"
-  to = "https://:splat"
-  status = 301
-  force = true
