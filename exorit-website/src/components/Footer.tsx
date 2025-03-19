@@ -63,7 +63,7 @@ const Footer = () => {
                 <li key={item}>
                   <Link 
                     to={`/${item === 'Home' ? '' : item.toLowerCase()}`}
-                    className="text-gray-300 hover:text-primary transition-colors"
+                    className="text-gray-300 hover:text-primary hover:font-medium transition-colors duration-300"
                   >
                     {item}
                   </Link>
@@ -89,7 +89,7 @@ const Footer = () => {
                 'AI Solutions',
                 'Cloud Services'
               ].map((service) => (
-                <li key={service} className="text-gray-300 hover:text-primary transition-colors">
+                <li key={service} className="text-gray-300 hover:text-primary hover:font-medium transition-colors duration-300">
                   {service}
                 </li>
               ))}

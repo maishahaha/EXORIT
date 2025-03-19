@@ -25,13 +25,13 @@ const Button = ({
   disabled = false
 }: ButtonProps) => {
   // Base styles
-  const baseStyles = 'inline-flex items-center justify-center font-medium rounded-md transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 border-2'
+  const baseStyles = 'inline-flex items-center justify-center font-medium rounded-md transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2'
   
   // Variant styles
   const variantStyles = {
     primary: 'bg-primary border-primary text-white hover:bg-primary/90 hover:text-white shadow-lg hover:shadow-xl',
     secondary: 'bg-secondary border-secondary text-white hover:bg-secondary/90 hover:text-white shadow-md hover:shadow-lg',
-    outline: 'bg-transparent border-primary text-primary hover:bg-primary hover:text-white'
+    outline: 'bg-transparent border-2 border-white text-white hover:bg-white hover:text-primary hover:border-primary transition-all duration-300'
   }
   
   // Size styles

@@ -65,10 +65,12 @@ const Navbar = () => {
                   <NavLink 
                     to={item.path}
                     className={({ isActive }) => 
-                      `text-base font-medium transition-all duration-300 hover:text-primary ${
+                      `text-base font-medium transition-all duration-300 ${
                         isActive 
                           ? 'text-primary border-b-2 border-primary pb-1' 
-                          : 'text-gray-600 hover:border-b-2 hover:border-primary hover:pb-1'
+                          : scrolled 
+                            ? 'text-gray-700 hover:text-primary hover:border-b-2 hover:border-primary hover:pb-1'
+                            : 'text-white hover:text-primary hover:border-b-2 hover:border-primary hover:pb-1'
                       }`
                     }
                   >
