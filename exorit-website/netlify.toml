@@ -16,7 +16,6 @@
   [headers.values]
     X-Frame-Options = "DENY"
     X-XSS-Protection = "1; mode=block"
-    Cache-Control = "public, max-age=31536000, immutable"
 
 # JavaScript files
 [[headers]]
@@ -29,37 +28,21 @@
   [headers.values]
     Content-Type = "application/javascript"
 
-# CSS files
+# CSS files - simplified and more specific
+[[headers]]
+  for = "/assets/css/*"
+  [headers.values]
+    Content-Type = "text/css"
+    Cache-Control = "public, max-age=31536000, immutable"
+
 [[headers]]
   for = "/*.css"
   [headers.values]
     Content-Type = "text/css"
-
-[[headers]]
-  for = "/assets/css/*.css"
-  [headers.values]
-    Content-Type = "text/css"
+    Cache-Control = "public, max-age=31536000, immutable"
 
 [[headers]]
   for = "/*.mjs"
-  [headers.values]
-    Content-Type = "application/javascript"
-    Cache-Control = "public, max-age=31536000, immutable"
-
-[[headers]]
-  for = "/assets/*.js"
-  [headers.values]
-    Content-Type = "application/javascript"
-    Cache-Control = "public, max-age=31536000, immutable"
-
-[[headers]]
-  for = "/assets/*.css"
-  [headers.values]
-    Content-Type = "text/css"
-    Cache-Control = "public, max-age=31536000, immutable"
-
-[[headers]]
-  for = "/assets/*.mjs"
   [headers.values]
     Content-Type = "application/javascript"
     Cache-Control = "public, max-age=31536000, immutable"
