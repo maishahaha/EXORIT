@@ -1,11 +1,12 @@
 import { motion } from 'framer-motion'
 import Button from '../components/Button'
+import WebAnimation from '../components/WebAnimation'
 
 const Home = () => {
   return (
     <>
       {/* Hero Section */}
-      <section className="relative h-screen flex items-center">
+      <section className="relative h-screen flex items-center overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-r from-gray-900 to-blue-900 opacity-80 z-0"></div>
         <div 
           className="absolute inset-0 z-10 opacity-20"
@@ -15,7 +16,10 @@ const Home = () => {
             backgroundPosition: 'center'
           }}
         ></div>
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-20">
+        <div className="absolute inset-0 z-20 pointer-events-auto">
+          <WebAnimation />
+        </div>
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-30">
           <div className="max-w-3xl">
             <motion.h1
               initial={{ opacity: 0, y: -20 }}
@@ -52,7 +56,7 @@ const Home = () => {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 1, delay: 1.2 }}
-          className="absolute bottom-10 left-1/2 transform -translate-x-1/2 z-20"
+          className="absolute bottom-10 left-1/2 transform -translate-x-1/2 z-30"
         >
           <a 
             href="#about" 
