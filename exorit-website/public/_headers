@@ -2,4 +2,12 @@
   Content-Type: text/css
 
 /assets/js/*
-  Content-Type: application/javascript 
+  Content-Type: application/javascript
+
+/favicon.ico
+  Cache-Control: public, max-age=86400
+
+/*
+  X-Frame-Options: DENY
+  X-Content-Type-Options: nosniff
+  Referrer-Policy: no-referrer-when-downgrade

@@ -16,6 +16,11 @@ export default defineConfig({
         assetFileNames: (assetInfo) => {
           if (!assetInfo.name) return 'assets/[name].[hash][extname]';
           
+          // Handle favicon.ico specially
+          if (assetInfo.name === 'favicon.ico') {
+            return '[name][extname]';
+          }
+          
           if (assetInfo.name.endsWith('.css')) {
             return 'assets/css/[name].[hash][extname]';
           }
