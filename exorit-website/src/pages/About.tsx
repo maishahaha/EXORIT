@@ -8,23 +8,6 @@ const AboutPage = () => {
     visible: { opacity: 1, y: 0 }
   }
 
-  // 3D Laptop animation variants
-  const laptopVariants = {
-    hidden: { opacity: 0, rotateY: -30, rotateX: 15, y: 50 },
-    visible: { 
-      opacity: 1, 
-      rotateY: -20, 
-      rotateX: 10, 
-      y: 0,
-      transition: { 
-        duration: 1.2, 
-        ease: "easeOut",
-        yoyo: Infinity,
-        repeatDelay: 5
-      }
-    }
-  }
-
   return (
     <>
       {/* Hero Section */}
@@ -55,66 +38,6 @@ const AboutPage = () => {
                 Building the future of digital experiences through innovative software solutions.
               </motion.p>
             </div>
-            
-            {/* 3D Laptop Animation */}
-            <motion.div 
-              className="hidden md:block md:w-1/2 mt-12 md:mt-0"
-              initial="hidden"
-              animate="visible"
-              variants={laptopVariants}
-              style={{ perspective: "1200px" }}
-            >
-              <div className="relative mx-auto" style={{ width: "90%", maxWidth: "500px" }}>
-                {/* Laptop Base */}
-                <div 
-                  className="bg-gray-800 rounded-b-xl p-1" 
-                  style={{ 
-                    height: "15px", 
-                    transformOrigin: "center top", 
-                    transform: "rotateX(5deg)",
-                    boxShadow: "0 5px 15px rgba(0,0,0,0.5)",
-                    width: "80%",
-                    margin: "0 auto"
-                  }}
-                >
-                  {/* Trackpad */}
-                  <div className="mx-auto bg-gray-700 rounded-md" style={{ width: "40%", height: "5px" }}></div>
-                </div>
-                
-                {/* Laptop Screen */}
-                <div 
-                  className="bg-gray-800 rounded-t-md p-2 overflow-hidden" 
-                  style={{ 
-                    aspectRatio: "16/10", 
-                    boxShadow: "0 10px 30px -5px rgba(0, 0, 0, 0.5)",
-                    border: "1px solid rgba(255,255,255,0.1)",
-                    transform: "rotateX(5deg)"
-                  }}
-                >
-                  <div className="w-full h-full bg-gradient-to-br from-blue-600 to-purple-700 rounded-sm p-6 flex flex-col items-center justify-center">
-                    <div className="text-white text-center">
-                      <div className="mb-2 text-3xl font-bold tracking-tight">{'<EXORIT/>'}</div>
-                      <div className="text-sm mb-6 opacity-90">Innovative Software Solutions</div>
-                      
-                      <div className="flex flex-col gap-3 mt-4">
-                        <div className="flex items-center gap-2">
-                          <div className="w-3 h-3 bg-green-400 rounded-full"></div>
-                          <div className="text-white font-semibold">Excellence</div>
-                        </div>
-                        <div className="flex items-center gap-2">
-                          <div className="w-3 h-3 bg-blue-400 rounded-full"></div>
-                          <div className="text-white font-semibold">Optimization</div>
-                        </div>
-                        <div className="flex items-center gap-2">
-                          <div className="w-3 h-3 bg-purple-400 rounded-full"></div>
-                          <div className="text-white font-semibold">Reliability</div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </motion.div>
           </div>
         </div>
       </section>
