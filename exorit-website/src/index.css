@@ -2,6 +2,19 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Global CSS Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  width: 100%;
+  max-width: 100vw;
+  overflow-x: hidden;
+}
+
 /* Custom styles */
 :root {
   font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
