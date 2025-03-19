@@ -209,7 +209,7 @@ const CareersPage = () => {
       </section>
 
       {/* Why Join Us Section */}
-      <section className="py-20 bg-white">
+      <section className="py-20 bg-white dark:bg-gray-900">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <motion.h2
@@ -217,7 +217,7 @@ const CareersPage = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.8 }}
-              className="text-3xl md:text-4xl font-bold text-gray-900 mb-4"
+              className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-gray-100 mb-4"
             >
               Why Join EXORIT?
             </motion.h2>
@@ -233,7 +233,7 @@ const CareersPage = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.8, delay: 0.2 }}
-              className="text-lg text-gray-600 max-w-3xl mx-auto"
+              className="text-lg text-gray-600 dark:text-gray-300 max-w-3xl mx-auto"
             >
               We offer more than just a job; we provide a career with growth opportunities, challenging projects,
               and a supportive environment where your ideas are valued.
@@ -310,11 +310,11 @@ const CareersPage = () => {
                     transition: { duration: 0.5, delay: index * 0.1 }
                   }
                 }}
-                className="bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300"
+                className="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300"
               >
-                <div className="mb-4">{benefit.icon}</div>
-                <h3 className="text-xl font-semibold text-gray-900 mb-3">{benefit.title}</h3>
-                <p className="text-gray-600">{benefit.description}</p>
+                <div className="mb-4 text-primary dark:text-primary-light">{benefit.icon}</div>
+                <h3 className="text-xl font-semibold text-gray-900 dark:text-gray-100 mb-3">{benefit.title}</h3>
+                <p className="text-gray-600 dark:text-gray-300">{benefit.description}</p>
               </motion.div>
             ))}
           </div>
@@ -322,7 +322,7 @@ const CareersPage = () => {
       </section>
 
       {/* Current Openings Section */}
-      <section className="py-20 bg-gray-50">
+      <section className="py-20 bg-gray-50 dark:bg-gray-900">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <motion.h2
@@ -330,7 +330,7 @@ const CareersPage = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.8 }}
-              className="text-3xl md:text-4xl font-bold text-gray-900 mb-4"
+              className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-gray-100 mb-4"
             >
               Current Openings
             </motion.h2>
@@ -345,7 +345,7 @@ const CareersPage = () => {
           
           {/* Department filter buttons */}
           <div className="mb-8 flex justify-center">
-            <div className="bg-gray-100 p-2 rounded-lg inline-flex flex-wrap gap-2 justify-center shadow-sm">
+            <div className="bg-gray-100 dark:bg-gray-800 p-2 rounded-lg inline-flex flex-wrap gap-2 justify-center shadow-sm">
               {departments.map(dept => (
                 <button
                   key={dept}
@@ -353,7 +353,7 @@ const CareersPage = () => {
                   className={`px-5 py-2.5 rounded-md text-sm font-medium transition-all duration-300 ${
                     filter === dept
                       ? 'bg-primary text-white shadow-md'
-                      : 'bg-white text-gray-700 hover:bg-gray-50 shadow'
+                      : 'bg-white dark:bg-gray-700 text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-600 shadow'
                   }`}
                 >
                   {dept}
@@ -377,7 +377,7 @@ const CareersPage = () => {
                   initial="hidden"
                   animate="visible"
                   exit={{ opacity: 0, y: 10 }}
-                  className={`bg-white rounded-lg shadow-md overflow-hidden transition-all duration-300 ${
+                  className={`bg-white dark:bg-gray-800 rounded-lg shadow-md overflow-hidden transition-all duration-300 ${
                     selectedJob === job.id ? 'ring-2 ring-primary' : ''
                   }`}
                 >
@@ -386,20 +386,20 @@ const CareersPage = () => {
                     onClick={() => setSelectedJob(selectedJob === job.id ? null : job.id)}
                   >
                     <div className="flex flex-col md:flex-row md:items-center justify-between mb-4">
-                      <h3 className="text-xl font-bold text-gray-900">{job.title}</h3>
+                      <h3 className="text-xl font-bold text-gray-900 dark:text-gray-100">{job.title}</h3>
                       <div className="flex flex-wrap gap-2 mt-2 md:mt-0">
-                        <span className="bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded-full">
+                        <span className="bg-blue-100 dark:bg-blue-800 text-blue-800 dark:text-blue-100 text-xs px-2 py-1 rounded-full">
                           {job.department}
                         </span>
-                        <span className="bg-green-100 text-green-800 text-xs px-2 py-1 rounded-full">
+                        <span className="bg-green-100 dark:bg-green-800 text-green-800 dark:text-green-100 text-xs px-2 py-1 rounded-full">
                           {job.type}
                         </span>
-                        <span className="bg-gray-100 text-gray-800 text-xs px-2 py-1 rounded-full">
+                        <span className="bg-gray-100 dark:bg-gray-700 text-gray-800 dark:text-gray-300 text-xs px-2 py-1 rounded-full">
                           {job.location}
                         </span>
                       </div>
                     </div>
-                    <p className="text-gray-600">{job.description}</p>
+                    <p className="text-gray-600 dark:text-gray-300">{job.description}</p>
                     <div className="flex items-center mt-4 text-primary font-medium">
                       <span>{selectedJob === job.id ? 'Hide Details' : 'View Details'}</span>
                       <svg 
@@ -422,11 +422,11 @@ const CareersPage = () => {
                         animate={{ opacity: 1, height: "auto" }}
                         exit={{ opacity: 0, height: 0 }}
                         transition={{ duration: 0.3 }}
-                        className="px-6 pb-6 pt-2 border-t border-gray-200"
+                        className="px-6 pb-6 pt-2 border-t border-gray-200 dark:border-gray-700"
                       >
                         <div className="mb-6">
-                          <h4 className="text-lg font-semibold text-gray-900 mb-3">Requirements</h4>
-                          <ul className="list-disc list-inside space-y-2 text-gray-600">
+                          <h4 className="text-lg font-semibold text-gray-900 dark:text-gray-100 mb-3">Requirements</h4>
+                          <ul className="list-disc list-inside space-y-2 text-gray-600 dark:text-gray-300">
                             {job.requirements.map((req, index) => (
                               <li key={index}>{req}</li>
                             ))}
@@ -434,8 +434,8 @@ const CareersPage = () => {
                         </div>
 
                         <div className="mb-6">
-                          <h4 className="text-lg font-semibold text-gray-900 mb-3">Responsibilities</h4>
-                          <ul className="list-disc list-inside space-y-2 text-gray-600">
+                          <h4 className="text-lg font-semibold text-gray-900 dark:text-gray-100 mb-3">Responsibilities</h4>
+                          <ul className="list-disc list-inside space-y-2 text-gray-600 dark:text-gray-300">
                             {job.responsibilities.map((resp, index) => (
                               <li key={index}>{resp}</li>
                             ))}
@@ -463,8 +463,8 @@ const CareersPage = () => {
                   exit={{ opacity: 0 }}
                   className="text-center py-12"
                 >
-                  <h3 className="text-xl text-gray-600 mb-4">No openings in this department at the moment.</h3>
-                  <p className="text-gray-500 mb-6">Please check back later or browse our other departments.</p>
+                  <h3 className="text-xl text-gray-600 dark:text-gray-300 mb-4">No openings in this department at the moment.</h3>
+                  <p className="text-gray-500 dark:text-gray-400 mb-6">Please check back later or browse our other departments.</p>
                   <Button onClick={() => setFilter('All Departments')} variant="secondary">
                     Show All Departments
                   </Button>
@@ -592,7 +592,7 @@ const CareersPage = () => {
       )}
 
       {/* General Application Section */}
-      <section className="py-20 bg-white">
+      <section className="py-20 bg-white dark:bg-gray-900">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-4xl mx-auto text-center">
             <motion.h2
@@ -600,7 +600,7 @@ const CareersPage = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.8 }}
-              className="text-3xl md:text-4xl font-bold text-gray-900 mb-6"
+              className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-gray-100 mb-6"
             >
               Don't See a Perfect Fit?
             </motion.h2>

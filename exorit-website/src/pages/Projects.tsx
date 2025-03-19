@@ -163,10 +163,10 @@ const ProjectsPage = () => {
       </section>
 
       {/* Filter Section */}
-      <section className="py-10 bg-white">
+      <section className="py-10 bg-white dark:bg-gray-900">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-wrap justify-center mb-8">
-            <div className="bg-gray-100 p-2 rounded-lg inline-flex flex-wrap gap-2 justify-center shadow-sm">
+            <div className="bg-gray-100 dark:bg-gray-800 p-2 rounded-lg inline-flex flex-wrap gap-2 justify-center shadow-sm">
               {categories.map(category => (
                 <button
                   key={category}
@@ -174,7 +174,7 @@ const ProjectsPage = () => {
                   className={`px-5 py-2.5 rounded-md text-sm font-medium transition-all duration-300 ${
                     activeFilter === category
                       ? 'bg-primary text-white shadow-md'
-                      : 'bg-white text-gray-700 hover:bg-gray-50 shadow'
+                      : 'bg-white dark:bg-gray-700 text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-600 shadow'
                   }`}
                 >
                   {category}
@@ -186,7 +186,7 @@ const ProjectsPage = () => {
       </section>
 
       {/* Projects Grid */}
-      <section className="py-10 bg-white">
+      <section className="py-10 bg-white dark:bg-gray-900">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div 
             variants={containerVariants}
@@ -204,7 +204,7 @@ const ProjectsPage = () => {
                   animate="visible"
                   exit={{ opacity: 0, y: 10 }}
                   onClick={() => setSelectedProject(project)}
-                  className="bg-white rounded-lg shadow-lg overflow-hidden cursor-pointer group"
+                  className="bg-white dark:bg-gray-800 rounded-lg shadow-lg overflow-hidden cursor-pointer group"
                 >
                   <div className="relative overflow-hidden h-64">
                     <img 
@@ -226,12 +226,12 @@ const ProjectsPage = () => {
                     </div>
                   </div>
                   <div className="p-5">
-                    <h3 className="text-xl font-bold text-gray-900 mb-2 group-hover:text-primary transition-colors">
+                    <h3 className="text-xl font-bold text-gray-900 dark:text-gray-100 mb-2 group-hover:text-primary transition-colors">
                       {project.title}
                     </h3>
                     <div className="flex justify-between items-center">
-                      <span className="text-sm text-gray-500">{project.category}</span>
-                      <span className="text-sm font-medium text-gray-900">{project.year}</span>
+                      <span className="text-sm text-gray-500 dark:text-gray-400">{project.category}</span>
+                      <span className="text-sm font-medium text-gray-900 dark:text-gray-100">{project.year}</span>
                     </div>
                   </div>
                 </motion.div>
@@ -241,7 +241,7 @@ const ProjectsPage = () => {
 
           {filteredProjects.length === 0 && (
             <div className="text-center py-16">
-              <h3 className="text-xl text-gray-600">No projects found in this category.</h3>
+              <h3 className="text-xl text-gray-600 dark:text-gray-300">No projects found in this category.</h3>
               <Button 
                 onClick={() => handleFilterClick('All')} 
                 variant="secondary" 
@@ -268,7 +268,7 @@ const ProjectsPage = () => {
               initial={{ opacity: 0, scale: 0.9 }}
               animate={{ opacity: 1, scale: 1 }}
               exit={{ opacity: 0, scale: 0.9 }}
-              className="bg-white rounded-lg max-w-4xl w-full max-h-[90vh] overflow-y-auto"
+              className="bg-white dark:bg-gray-800 rounded-lg max-w-4xl w-full max-h-[90vh] overflow-y-auto"
               onClick={e => e.stopPropagation()}
             >
               <div className="relative h-72 md:h-96">
@@ -294,17 +294,17 @@ const ProjectsPage = () => {
                     </span>
                   ))}
                 </div>
-                <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-3">{selectedProject.title}</h2>
-                <p className="text-lg text-gray-700 mb-6">{selectedProject.description}</p>
+                <h2 className="text-2xl md:text-3xl font-bold text-gray-900 dark:text-gray-100 mb-3">{selectedProject.title}</h2>
+                <p className="text-lg text-gray-700 dark:text-gray-300 mb-6">{selectedProject.description}</p>
                 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
                   <div>
-                    <h4 className="text-sm uppercase tracking-wider text-gray-500 mb-2">Client</h4>
-                    <p className="text-gray-900">{selectedProject.client}</p>
+                    <h4 className="text-sm uppercase tracking-wider text-gray-500 dark:text-gray-400 mb-2">Client</h4>
+                    <p className="text-gray-900 dark:text-gray-100">{selectedProject.client}</p>
                   </div>
                   <div>
-                    <h4 className="text-sm uppercase tracking-wider text-gray-500 mb-2">Year</h4>
-                    <p className="text-gray-900">{selectedProject.year}</p>
+                    <h4 className="text-sm uppercase tracking-wider text-gray-500 dark:text-gray-400 mb-2">Year</h4>
+                    <p className="text-gray-900 dark:text-gray-100">{selectedProject.year}</p>
                   </div>
                 </div>
                 
@@ -320,7 +320,7 @@ const ProjectsPage = () => {
       </AnimatePresence>
 
       {/* CTA Section */}
-      <section className="py-20 bg-gray-100">
+      <section className="py-20 bg-gray-100 dark:bg-gray-800">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-4xl mx-auto text-center">
             <motion.h2
@@ -328,7 +328,7 @@ const ProjectsPage = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.8 }}
-              className="text-3xl md:text-4xl font-bold text-gray-900 mb-6"
+              className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-gray-100 mb-6"
             >
               Ready to Build Something Amazing?
             </motion.h2>
@@ -337,7 +337,7 @@ const ProjectsPage = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.8, delay: 0.2 }}
-              className="text-xl text-gray-700 mb-10"
+              className="text-xl text-gray-700 dark:text-gray-300 mb-10"
             >
               Let's turn your vision into reality with our experienced team and cutting-edge technology.
             </motion.p>

@@ -88,7 +88,7 @@ const TeamPage = () => {
       </section>
 
       {/* Team Members Section */}
-      <section className="py-20 bg-white">
+      <section className="py-20 bg-white dark:bg-gray-900">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <motion.h2
@@ -96,7 +96,7 @@ const TeamPage = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.8 }}
-              className="text-3xl md:text-4xl font-bold text-gray-900 mb-4"
+              className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-gray-100 mb-4"
             >
               Leadership Team
             </motion.h2>
@@ -105,7 +105,7 @@ const TeamPage = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.8, delay: 0.2 }}
-              className="text-lg text-gray-600 max-w-3xl mx-auto"
+              className="text-lg text-gray-600 dark:text-gray-300 max-w-3xl mx-auto"
             >
               Our leadership team brings decades of combined experience in software development,
               design, and business management to guide EXORIT towards continued excellence and innovation.
@@ -123,7 +123,7 @@ const TeamPage = () => {
               <motion.div
                 key={member.name}
                 variants={itemVariants}
-                className="bg-white rounded-lg shadow-lg overflow-hidden group relative hover:shadow-xl transition-shadow duration-300"
+                className="bg-white dark:bg-gray-700 rounded-lg shadow-lg overflow-hidden group relative hover:shadow-xl transition-shadow duration-300"
               >
                 <div className="relative overflow-hidden h-80">
                   <img 
@@ -152,9 +152,9 @@ const TeamPage = () => {
                   </div>
                 </div>
                 <div className="p-6">
-                  <h3 className="text-xl font-bold text-gray-900 mb-2 group-hover:text-primary transition-colors duration-300">{member.name}</h3>
-                  <p className="text-gray-600 mb-4 group-hover:text-gray-800 transition-colors duration-300">{member.role}</p>
-                  <p className="text-gray-700 mb-4 group-hover:text-gray-900 transition-colors duration-300">{member.bio}</p>
+                  <h3 className="text-xl font-bold text-gray-900 dark:text-gray-100 mb-2 group-hover:text-primary transition-colors duration-300">{member.name}</h3>
+                  <p className="text-gray-600 dark:text-gray-300 mb-4 group-hover:text-gray-800 dark:group-hover:text-gray-200 transition-colors duration-300">{member.role}</p>
+                  <p className="text-gray-700 dark:text-gray-300 mb-4 group-hover:text-gray-900 dark:group-hover:text-gray-100 transition-colors duration-300">{member.bio}</p>
                 </div>
               </motion.div>
             ))}
@@ -163,7 +163,7 @@ const TeamPage = () => {
       </section>
 
       {/* Company Culture Section */}
-      <section className="py-20 bg-gray-50">
+      <section className="py-20 bg-gray-50 dark:bg-gray-800">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col lg:flex-row items-center gap-12">
             <motion.div
@@ -173,14 +173,14 @@ const TeamPage = () => {
               transition={{ duration: 0.8 }}
               className="lg:w-1/2"
             >
-              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">Our Company Culture</h2>
+              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-gray-100 mb-6">Our Company Culture</h2>
               <div className="h-1 w-20 bg-primary mb-8"></div>
-              <p className="text-lg text-gray-700 mb-6">
+              <p className="text-lg text-gray-700 dark:text-gray-300 mb-6">
                 At EXORIT, we believe that great products come from great teams. We foster a culture of 
                 collaboration, innovation, and continuous learning that empowers our team members to do 
                 their best work and grow professionally.
               </p>
-              <p className="text-lg text-gray-700 mb-6">
+              <p className="text-lg text-gray-700 dark:text-gray-300 mb-6">
                 We value diversity of thought and background, knowing that different perspectives 
                 lead to more creative solutions. Our work environment balances autonomy with accountability, 
                 giving team members the freedom to explore ideas while maintaining high standards of quality.
@@ -192,7 +192,7 @@ const TeamPage = () => {
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7" />
                     </svg>
                   </div>
-                  <p className="text-gray-700">Collaborative and supportive environment</p>
+                  <p className="text-gray-700 dark:text-gray-300">Collaborative and supportive environment</p>
                 </div>
                 <div className="flex items-center">
                   <div className="h-6 w-6 rounded-full bg-primary flex items-center justify-center text-white mr-3">
@@ -200,7 +200,7 @@ const TeamPage = () => {
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7" />
                     </svg>
                   </div>
-                  <p className="text-gray-700">Remote-friendly with flexible work options</p>
+                  <p className="text-gray-700 dark:text-gray-300">Remote-friendly with flexible work options</p>
                 </div>
                 <div className="flex items-center">
                   <div className="h-6 w-6 rounded-full bg-primary flex items-center justify-center text-white mr-3">
@@ -208,7 +208,7 @@ const TeamPage = () => {
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7" />
                     </svg>
                   </div>
-                  <p className="text-gray-700">Continuous learning and professional development</p>
+                  <p className="text-gray-700 dark:text-gray-300">Continuous learning and professional development</p>
                 </div>
               </div>
               <Button to="/careers" variant="secondary">
