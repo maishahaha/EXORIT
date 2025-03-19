@@ -1,0 +1,6 @@
+# Ensure asset files are served with the correct MIME type
+/assets/css/* /assets/css/:splat 200
+/assets/js/* /assets/js/:splat 200
+
+# Handle client-side routing
+/* /index.html 200 

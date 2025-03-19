@@ -1,10 +1,5 @@
-# Custom Netlify Headers file
-# This file will be copied to /dist/_headers during build
-
-# Set CSS MIME types
 /assets/css/*
   Content-Type: text/css
 
-# Set JS MIME types
 /assets/js/*
   Content-Type: application/javascript 

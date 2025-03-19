@@ -1,18 +1,9 @@
 [build]
-  command = "npm run build"
   publish = "dist"
+  command = "npm run build"
 
-[build.environment]
-  NODE_VERSION = "20"
-
-# Handle SPA routing
 [[redirects]]
   from = "/*"
   to = "/index.html"
   status = 200
-  force = false
-
-# Apply Edge Function to all static assets
-[[edge_functions]]
-  function = "set-content-type"
-  path = "/assets/*" 
+  force = false 
