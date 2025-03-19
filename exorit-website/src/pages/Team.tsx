@@ -28,9 +28,9 @@ const teamMembers: TeamMember[] = [
   },
   {
     name: "Golam Tawhid Fahad",
-    role: "Backend Developer",
+    role: "Full Stack Developer",
     image: "/team/Golam_Tawhid.jpg",
-    bio: "Backend developer with a focus on building scalable and efficient systems.",
+    bio: "Full stack developer with a knack for building scalable web applications.",
     socials: {
       linkedin: "https://www.linkedin.com/in/g-t-fahad/",
       github: "#"
@@ -38,9 +38,9 @@ const teamMembers: TeamMember[] = [
   },
   {
     name: "Maisha Iffat Chowdhury",
-    role: "Frontend Developer",
+    role: "Software Engineer and UI/UX Designer",
     image: "/team/image.png",
-    bio: "Creative frontend developer with a knack for building user-friendly interfaces.",
+    bio: "Creative software engineer and UI/UX designer with a passion for user-centered design.",
     socials: {
       linkedin: "https://www.linkedin.com/in/maisha-iffat-chowdhury",
       github: "#"
