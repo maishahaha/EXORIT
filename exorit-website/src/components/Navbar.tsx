@@ -23,9 +23,23 @@ const Navbar = () => {
     }
   }, [])
 
+  // Scroll to top function
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    })
+  }
+
   // Toggle mobile menu
   const toggleMenu = () => {
     setIsOpen(!isOpen)
+  }
+
+  // Handle navigation click - combines navigation with scroll to top
+  const handleNavClick = () => {
+    scrollToTop()
+    setIsOpen(false) // Close mobile menu if open
   }
 
   return (
@@ -39,7 +53,7 @@ const Navbar = () => {
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 w-full">
         <div className="flex items-center h-16">
           <div className="flex-shrink-0">
-            <Link to="/" className="flex items-center">
+            <Link to="/" onClick={handleNavClick} className="flex items-center">
               <motion.span 
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
@@ -64,6 +78,7 @@ const Navbar = () => {
                 <li key={item.name}>
                   <NavLink 
                     to={item.path}
+                    onClick={handleNavClick}
                     className={({ isActive }) => 
                       `text-base font-medium transition-all duration-300 ${
                         isActive 
@@ -145,7 +160,7 @@ const Navbar = () => {
                 <NavLink
                   key={item.name}
                   to={item.path}
-                  onClick={() => setIsOpen(false)}
+                  onClick={handleNavClick}
                   className={({ isActive }) =>
                     `block px-3 py-2 rounded-md text-base font-medium ${
                       isActive
