@@ -8,34 +8,113 @@ const AboutPage = () => {
     visible: { opacity: 1, y: 0 }
   }
 
+  // 3D Laptop animation variants
+  const laptopVariants = {
+    hidden: { opacity: 0, rotateY: -30, rotateX: 15, y: 50 },
+    visible: { 
+      opacity: 1, 
+      rotateY: -20, 
+      rotateX: 10, 
+      y: 0,
+      transition: { 
+        duration: 1.2, 
+        ease: "easeOut",
+        yoyo: Infinity,
+        repeatDelay: 5
+      }
+    }
+  }
+
   return (
     <>
       {/* Hero Section */}
-      <section className="bg-gradient-to-r from-gray-900 to-blue-900 py-32 md:py-40">
+      <section className="bg-gradient-to-r from-gray-900 to-blue-900 py-32 md:py-40 overflow-hidden">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="max-w-3xl">
-            <motion.h1
-              initial={{ opacity: 0, y: -20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8 }}
-              className="text-4xl md:text-5xl font-bold text-white mb-6"
-            >
-              About EXORIT
-            </motion.h1>
+          <div className="flex flex-col md:flex-row items-center">
+            <div className="md:w-1/2 max-w-3xl">
+              <motion.h1
+                initial={{ opacity: 0, y: -20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8 }}
+                className="text-4xl md:text-5xl font-bold text-white mb-6"
+              >
+                About EXORIT
+              </motion.h1>
+              <motion.div 
+                initial={{ opacity: 0, width: 0 }}
+                animate={{ opacity: 1, width: "100px" }}
+                transition={{ duration: 1 }}
+                className="h-1 bg-primary mb-8"
+              ></motion.div>
+              <motion.p 
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ duration: 0.8, delay: 0.3 }}
+                className="text-xl text-gray-200"
+              >
+                Building the future of digital experiences through innovative software solutions.
+              </motion.p>
+            </div>
+            
+            {/* 3D Laptop Animation */}
             <motion.div 
-              initial={{ opacity: 0, width: 0 }}
-              animate={{ opacity: 1, width: "100px" }}
-              transition={{ duration: 1 }}
-              className="h-1 bg-primary mb-8"
-            ></motion.div>
-            <motion.p 
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ duration: 0.8, delay: 0.3 }}
-              className="text-xl text-gray-200"
+              className="hidden md:block md:w-1/2 mt-12 md:mt-0"
+              initial="hidden"
+              animate="visible"
+              variants={laptopVariants}
+              style={{ perspective: "1200px" }}
             >
-              Building the future of digital experiences through innovative software solutions.
-            </motion.p>
+              <div className="relative mx-auto" style={{ width: "90%", maxWidth: "500px" }}>
+                {/* Laptop Base */}
+                <div 
+                  className="bg-gray-800 rounded-b-xl p-1" 
+                  style={{ 
+                    height: "15px", 
+                    transformOrigin: "center top", 
+                    transform: "rotateX(5deg)",
+                    boxShadow: "0 5px 15px rgba(0,0,0,0.5)",
+                    width: "80%",
+                    margin: "0 auto"
+                  }}
+                >
+                  {/* Trackpad */}
+                  <div className="mx-auto bg-gray-700 rounded-md" style={{ width: "40%", height: "5px" }}></div>
+                </div>
+                
+                {/* Laptop Screen */}
+                <div 
+                  className="bg-gray-800 rounded-t-md p-2 overflow-hidden" 
+                  style={{ 
+                    aspectRatio: "16/10", 
+                    boxShadow: "0 10px 30px -5px rgba(0, 0, 0, 0.5)",
+                    border: "1px solid rgba(255,255,255,0.1)",
+                    transform: "rotateX(5deg)"
+                  }}
+                >
+                  <div className="w-full h-full bg-gradient-to-br from-blue-600 to-purple-700 rounded-sm p-6 flex flex-col items-center justify-center">
+                    <div className="text-white text-center">
+                      <div className="mb-2 text-3xl font-bold tracking-tight">{'<EXORIT/>'}</div>
+                      <div className="text-sm mb-6 opacity-90">Innovative Software Solutions</div>
+                      
+                      <div className="flex flex-col gap-3 mt-4">
+                        <div className="flex items-center gap-2">
+                          <div className="w-3 h-3 bg-green-400 rounded-full"></div>
+                          <div className="text-white font-semibold">Excellence</div>
+                        </div>
+                        <div className="flex items-center gap-2">
+                          <div className="w-3 h-3 bg-blue-400 rounded-full"></div>
+                          <div className="text-white font-semibold">Optimization</div>
+                        </div>
+                        <div className="flex items-center gap-2">
+                          <div className="w-3 h-3 bg-purple-400 rounded-full"></div>
+                          <div className="text-white font-semibold">Reliability</div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </motion.div>
           </div>
         </div>
       </section>
