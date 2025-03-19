@@ -24,7 +24,7 @@ const Button = ({
   type = 'button',
   disabled = false
 }: ButtonProps) => {
-  // Base styles - added display and border styles
+  // Base styles
   const baseStyles = 'inline-flex items-center justify-center font-medium rounded-md transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 border-2'
   
   // Variant styles
@@ -44,10 +44,8 @@ const Button = ({
   // Disabled styles
   const disabledStyles = disabled ? 'opacity-50 cursor-not-allowed pointer-events-none' : ''
   
-  // If custom className is provided, use it with base styles
-  const buttonClasses = className 
-    ? `${baseStyles} ${sizeStyles[size]} ${disabledStyles} ${className}`
-    : `${baseStyles} ${variantStyles[variant]} ${sizeStyles[size]} ${disabledStyles}`
+  // Combine all styles
+  const buttonClasses = `${baseStyles} ${variantStyles[variant]} ${sizeStyles[size]} ${disabledStyles} ${className}`
   
   // Render based on link type (internal, external, or button)
   if (to) {
