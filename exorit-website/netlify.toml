@@ -5,36 +5,33 @@
 [build.environment]
   NODE_VERSION = "20"
 
-# Critical asset handling - these routes must come before the SPA fallback
 [[redirects]]
   from = "/assets/*"
   to = "/assets/:splat"
   status = 200
   force = true
 
-# Set correct MIME types for specific file extensions
-[[headers]]
-  for = "*.js"
-  [headers.values]
-    Content-Type = "application/javascript; charset=utf-8"
-
-[[headers]]
-  for = "*.css"
-  [headers.values]
-    Content-Type = "text/css; charset=utf-8"
-
-[[headers]]
-  for = "/assets/js/*.js"
-  [headers.values]
-    Content-Type = "application/javascript; charset=utf-8"
-
-[[headers]]
-  for = "/assets/css/*.css"
-  [headers.values]
-    Content-Type = "text/css; charset=utf-8"
-
-# SPA fallback - must come after critical asset handling
 [[redirects]]
   from = "/*"
   to = "/index.html"
   status = 200
+
+[[headers]]
+  for = "/*.js"
+  [headers.values]
+    Content-Type = "application/javascript; charset=utf-8"
+
+[[headers]]
+  for = "/*.css"
+  [headers.values]
+    Content-Type = "text/css; charset=utf-8"
+
+[[headers]]
+  for = "/assets/js/*"
+  [headers.values]
+    Content-Type = "application/javascript; charset=utf-8"
+
+[[headers]]
+  for = "/assets/css/*"
+  [headers.values]
+    Content-Type = "text/css; charset=utf-8"
