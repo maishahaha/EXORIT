@@ -1,15 +1,17 @@
 import { Outlet } from 'react-router-dom'
 import Navbar from '../components/Navbar'
 import Footer from '../components/Footer'
+import BackToTop from '../components/BackToTop'
 
 const MainLayout = () => {
   return (
-    <div className="flex flex-col min-h-screen">
+    <div className="min-h-screen flex flex-col">
       <Navbar />
       <main className="flex-grow">
         <Outlet />
       </main>
       <Footer />
+      <BackToTop />
     </div>
   )
 }
