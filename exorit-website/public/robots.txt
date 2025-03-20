@@ -1,12 +1,18 @@
+# https://www.robotstxt.org/robotstxt.html
 User-agent: *
 Allow: /
+
+# Sitemap location
 Sitemap: https://exorit.netlify.app/sitemap.xml
 
-# Prevent blocking of assets
-Allow: *.css
-Allow: *.js
-Allow: *.jpg
-Allow: *.jpeg
-Allow: *.png
-Allow: *.gif
-Allow: *.svg
+# Prevent crawling of error pages
+Disallow: /404
+Disallow: /error
+
+# Allow crawling of all content directories
+Allow: /assets/
+Allow: /images/
+Allow: /team/
+
+# Crawl-delay to be polite to servers
+Crawl-delay: 10

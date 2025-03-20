@@ -1,13 +1,45 @@
-/assets/css/*
-  Content-Type: text/css
-
-/assets/js/*
-  Content-Type: application/javascript
-
-/favicon.ico
-  Cache-Control: public, max-age=86400
-
+# Global headers
 /*
   X-Frame-Options: DENY
   X-Content-Type-Options: nosniff
   Referrer-Policy: no-referrer-when-downgrade
+  X-XSS-Protection: 1; mode=block
+  Strict-Transport-Security: max-age=31536000; includeSubDomains
+  Permissions-Policy: camera=(), microphone=(), geolocation=()
+  Content-Security-Policy: upgrade-insecure-requests
+
+# Cache control for static assets
+/assets/*
+  Cache-Control: public, max-age=31536000, immutable
+  Content-Type: text/css
+
+/assets/js/*
+  Content-Type: application/javascript
+  Cache-Control: public, max-age=31536000, immutable
+
+# Cache control for images
+/team/*
+  Cache-Control: public, max-age=86400
+  Content-Type: image/jpeg
+
+# Cache control for CSS and JS
+/*.css
+  Cache-Control: public, max-age=31536000, immutable
+  Content-Type: text/css
+
+/*.js
+  Cache-Control: public, max-age=31536000, immutable
+  Content-Type: application/javascript
+
+# Favicon caching
+/favicon.ico
+  Cache-Control: public, max-age=86400
+
+# Sitemap and robots.txt
+/sitemap.xml
+  Content-Type: application/xml
+  Cache-Control: public, max-age=3600
+
+/robots.txt
+  Content-Type: text/plain
+  Cache-Control: public, max-age=3600
