@@ -18,53 +18,59 @@ const navItems: NavItem[] = [
 ];
 
 const Navbar = () => {
-  const [isOpen, setIsOpen] = useState(false)
-  const [scrolled, setScrolled] = useState(false)
+  const [isOpen, setIsOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
 
   // Handle scroll effect for navbar
   useEffect(() => {
     const handleScroll = () => {
-      const offset = window.scrollY
+      const offset = window.scrollY;
       if (offset > 50) {
-        setScrolled(true)
+        setScrolled(true);
       } else {
-        setScrolled(false)
+        setScrolled(false);
       }
-    }
+    };
 
-    window.addEventListener('scroll', handleScroll)
+    window.addEventListener('scroll', handleScroll);
     return () => {
-      window.removeEventListener('scroll', handleScroll)
-    }
-  }, [])
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
 
   // Scroll to top function
   const scrollToTop = () => {
     window.scrollTo({
       top: 0,
       behavior: 'smooth'
-    })
-  }
+    });
+  };
 
   // Toggle mobile menu
   const toggleMenu = () => {
-    setIsOpen(!isOpen)
-  }
+    setIsOpen(!isOpen);
+  };
 
   // Handle navigation click - combines navigation with scroll to top
   const handleNavClick = () => {
-    scrollToTop()
-    setIsOpen(false) // Close mobile menu if open
-  }
+    scrollToTop();
+    setIsOpen(false); // Close mobile menu if open
+  };
 
   return (
-    <nav className={`fixed w-full top-0 z-50 transition-all duration-300 ${scrolled ? 'bg-white dark:bg-gray-900 shadow-lg' : 'bg-transparent'}`}>
+    <nav
+      className={`fixed w-full top-0 z-50 transition-all duration-300 ${
+        scrolled
+          ? 'backdrop-blur-lg bg-opacity-70 bg-white/70 dark:bg-gray-900/70 shadow-lg'
+          : 'bg-transparent'
+      }`}
+    >
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-20">
           {/* Logo */}
           <div className="flex-shrink-0">
             <Link to="/" onClick={handleNavClick} className="flex items-center">
-              <motion.span 
+              <motion.span
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 className="text-2xl font-bold text-primary dark:text-white"
@@ -73,7 +79,7 @@ const Navbar = () => {
               </motion.span>
             </Link>
           </div>
-          
+
           {/* Desktop Navigation - keeping it centered */}
           <div className="hidden md:flex flex-1 justify-center">
             <div className="flex items-center space-x-4">
@@ -81,16 +87,16 @@ const Navbar = () => {
                 <ul className="flex space-x-8">
                   {navItems.map((item) => (
                     <li key={item.name}>
-                      <NavLink 
+                      <NavLink
                         to={item.path}
                         onClick={handleNavClick}
-                        className={({ isActive }: { isActive: boolean }) => 
+                        className={({ isActive }: { isActive: boolean }) =>
                           `text-base font-medium transition-all duration-300 ${
-                            isActive 
-                              ? 'text-primary border-b-2 border-primary pb-1' 
-                              : scrolled 
-                                ? 'text-gray-700 dark:text-white hover:text-primary hover:border-b-2 hover:border-primary hover:pb-1'
-                                : 'text-white hover:text-primary hover:border-b-2 hover:border-primary hover:pb-1'
+                            isActive
+                              ? 'text-primary border-b-2 border-primary pb-1'
+                              : scrolled
+                              ? 'text-gray-700 dark:text-white hover:text-primary hover:border-b-2 hover:border-primary hover:pb-1'
+                              : 'text-white hover:text-primary hover:border-b-2 hover:border-primary hover:pb-1'
                           }`
                         }
                       >
@@ -102,12 +108,12 @@ const Navbar = () => {
               </nav>
             </div>
           </div>
-          
+
           {/* Dark Mode Toggle - separate from navigation */}
           <div className="hidden md:flex items-center justify-end space-x-4">
             <DarkModeToggle className="relative z-10" />
           </div>
-          
+
           {/* Mobile menu button and toggle */}
           <div className="flex md:hidden items-center space-x-4">
             <DarkModeToggle />
@@ -150,40 +156,40 @@ const Navbar = () => {
             </button>
           </div>
         </div>
+
+        {/* Mobile Menu */}
+        <AnimatePresence>
+          {isOpen && (
+            <motion.div
+              initial={{ opacity: 0, height: 0 }}
+              animate={{ opacity: 1, height: 'auto' }}
+              exit={{ opacity: 0, height: 0 }}
+              className="md:hidden bg-white dark:bg-gray-900 shadow-lg w-full"
+            >
+              <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+                {navItems.map((item) => (
+                  <NavLink
+                    key={item.name}
+                    to={item.path}
+                    onClick={handleNavClick}
+                    className={({ isActive }: { isActive: boolean }) =>
+                      `block px-3 py-2 rounded-md text-base font-medium ${
+                        isActive
+                          ? 'text-primary bg-gray-50 dark:bg-gray-800'
+                          : 'text-gray-700 dark:text-white hover:text-primary hover:bg-gray-50 dark:hover:bg-gray-800'
+                      }`
+                    }
+                  >
+                    {item.name}
+                  </NavLink>
+                ))}
+              </div>
+            </motion.div>
+          )}
+        </AnimatePresence>
       </div>
-
-      {/* Mobile Menu */}
-      <AnimatePresence>
-        {isOpen && (
-          <motion.div
-            initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: 'auto' }}
-            exit={{ opacity: 0, height: 0 }}
-            className="md:hidden bg-white dark:bg-gray-900 shadow-lg w-full"
-          >
-            <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
-              {navItems.map((item) => (
-                <NavLink
-                  key={item.name}
-                  to={item.path}
-                  onClick={handleNavClick}
-                  className={({ isActive }: { isActive: boolean }) =>
-                    `block px-3 py-2 rounded-md text-base font-medium ${
-                      isActive
-                        ? 'text-primary bg-gray-50 dark:bg-gray-800'
-                        : 'text-gray-700 dark:text-white hover:text-primary hover:bg-gray-50 dark:hover:bg-gray-800'
-                    }`
-                  }
-                >
-                  {item.name}
-                </NavLink>
-              ))}
-            </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
     </nav>
-  )
-}
+  );
+};
 
-export default Navbar
+export default Navbar;
