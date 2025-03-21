@@ -1,22 +1,52 @@
-import { motion } from 'framer-motion'
+import { motion, useScroll, useTransform } from 'framer-motion'
 import Button from '../components/Button'
 import WebAnimation from '../components/WebAnimation'
 import CodingWindow from '../components/CodingWindow'
+import { useScrollAnimation, useParallax } from '../hooks/useScrollAnimation'
+import { useRef } from 'react'
 
 const Home = () => {
+  const { scrollY } = useScroll();
+  const heroRef = useRef<HTMLDivElement>(null);
+  
+  // Parallax effect for hero background
+  const [backgroundRef, backgroundY] = useScrollAnimation({
+    offset: [0, 1],
+    outputRange: [0, 100]
+  });
+
+  // Fade effect for services
+  const [servicesRef, servicesOpacity] = useScrollAnimation({
+    offset: [-0.5, 0.5],
+    outputRange: [0, 1]
+  });
+
+  // Scale effect for CTA
+  const [ctaRef, ctaScale] = useScrollAnimation({
+    offset: [-0.3, 0.3],
+    outputRange: [0.95, 1]
+  });
+
   return (
     <>
       {/* Hero Section */}
-      <section className="relative h-screen flex items-center overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-r from-gray-900 to-blue-900 opacity-80 z-0 dark:from-gray-800 dark:to-gray-700"></div>
-        <div 
+      <section ref={heroRef} className="relative h-screen flex items-center overflow-hidden">
+        <motion.div 
+          ref={backgroundRef}
+          style={{ y: backgroundY }}
+          className="absolute inset-0 bg-gradient-to-r from-gray-900 to-blue-900 opacity-80 z-0 dark:from-gray-800 dark:to-gray-700"
+        ></motion.div>
+        <motion.div 
+          ref={backgroundRef}
+          style={{ y: backgroundY }}
           className="absolute inset-0 z-10 opacity-20 dark:opacity-30"
           style={{
             backgroundImage: 'url(https://images.unsplash.com/photo-1504384308090-c894fdcc538d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80)',
             backgroundSize: 'cover',
-            backgroundPosition: 'center'
+            backgroundPosition: 'center',
+            y: backgroundY
           }}
-        ></div>
+        ></motion.div>
         <div className="absolute inset-0 z-20 pointer-events-auto">
           <WebAnimation />
         </div>
@@ -76,14 +106,14 @@ const Home = () => {
       </section>
 
       {/* About Section */}
-      <section id="about" className="py-20 bg-white dark:bg-gray-900">
+      <section id="about" className="py-20 bg-white dark:bg-gray-900 overflow-hidden">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-4xl mx-auto text-center">
             <motion.h2
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: 50 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.8 }}
+              viewport={{ once: true, margin: "-100px" }}
+              transition={{ duration: 0.8, type: "spring" }}
               className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-gray-100 mb-6"
             >
               About EXORIT
@@ -132,8 +162,14 @@ const Home = () => {
       </section>
 
       {/* Services Preview */}
-      <section className="py-20 bg-gray-50 dark:bg-gray-800">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+      <section 
+        ref={servicesRef}
+        className="py-20 bg-gray-50 dark:bg-gray-800 overflow-hidden"
+      >
+        <motion.div 
+          className="container mx-auto px-4 sm:px-6 lg:px-8"
+          style={{ opacity: servicesOpacity }}
+        >
           <motion.h2
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -189,18 +225,24 @@ const Home = () => {
               </motion.div>
             ))}
           </div>
-        </div>
+        </motion.div>
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 bg-primary">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+      <section 
+        ref={ctaRef}
+        className="py-20 bg-primary overflow-hidden"
+      >
+        <motion.div 
+          className="container mx-auto px-4 sm:px-6 lg:px-8"
+          style={{ scale: ctaScale }}
+        >
           <div className="max-w-4xl mx-auto text-center">
             <motion.h2
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.8 }}
+              viewport={{ once: true, margin: "-50px" }}
+              transition={{ duration: 0.6, type: "spring" }}
               className="text-3xl md:text-4xl font-bold text-white mb-6"
             >
               Ready to Transform Your Business?
@@ -230,7 +272,7 @@ const Home = () => {
               </Button>
             </motion.div>
           </div>
-        </div>
+        </motion.div>
       </section>
     </>
   )
