@@ -31,6 +31,25 @@ html, body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+/* Theme transition styles */
+:root * {
+  transition: background-color 0.3s ease-in-out,
+              color 0.3s ease-in-out,
+              border-color 0.3s ease-in-out,
+              outline-color 0.3s ease-in-out,
+              box-shadow 0.3s ease-in-out;
+}
+
+/* Add a class for the transition animation */
+.theme-transition {
+  transition: all 0.3s ease-in-out;
+}
+
+/* Disable transitions during theme switch to prevent flash */
+.theme-transition-disabled * {
+  transition: none !important;
+}
+
 /* Dark mode variables */
 .dark {
   --text-color: #f3f4f6;

@@ -23,11 +23,23 @@ export const ThemeProvider: React.FC<ThemeProviderProps> = ({ children }) => {
 
   useEffect(() => {
     localStorage.setItem('darkMode', JSON.stringify(darkMode));
+    
+    // Add transition class before theme change
+    document.documentElement.classList.add('theme-transition');
+    
+    // Temporarily disable transitions during theme change
+    document.documentElement.classList.add('theme-transition-disabled');
+    
     if (darkMode) {
       document.documentElement.classList.add('dark');
     } else {
       document.documentElement.classList.remove('dark');
     }
+    
+    // Re-enable transitions after a short delay
+    window.setTimeout(() => {
+      document.documentElement.classList.remove('theme-transition-disabled');
+    }, 10);
   }, [darkMode]);
 
   const toggleDarkMode = () => {
