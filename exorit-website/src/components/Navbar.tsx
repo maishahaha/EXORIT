@@ -2,7 +2,6 @@ import { useState, useEffect } from 'react';
 import { Link, NavLink } from 'react-router-dom';
 import { AnimatePresence, motion } from 'framer-motion';
 import DarkModeToggle from './DarkModeToggle';
-import logo from '../assets/images/logo.svg'; // Importing the SVG logo
 
 interface NavItem {
   name: string;
@@ -71,7 +70,7 @@ const Navbar = () => {
           {/* Logo */}
           <div className="flex-shrink-0">
             <Link to="/" onClick={handleNavClick} className="flex items-center">
-              <img src={logo} alt="EXORIT Logo" className="h-10" />
+              <img src="/images/logo.svg" alt="EXORIT Logo" className="h-10" />
             </Link>
           </div>
 
