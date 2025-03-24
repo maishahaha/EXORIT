@@ -1,12 +1,11 @@
-import { motion, useScroll, useTransform } from 'framer-motion'
+import { motion } from 'framer-motion'
 import Button from '../components/Button'
 import WebAnimation from '../components/WebAnimation'
 import CodingWindow from '../components/CodingWindow'
-import { useScrollAnimation, useParallax } from '../hooks/useScrollAnimation'
+import { useScrollAnimation } from '../hooks/useScrollAnimation'
 import { useRef } from 'react'
 
 const Home = () => {
-  const { scrollY } = useScroll();
   const heroRef = useRef<HTMLDivElement>(null);
   
   // Parallax effect for hero background
@@ -38,7 +37,6 @@ const Home = () => {
         ></motion.div>
         <motion.div 
           ref={backgroundRef}
-          style={{ y: backgroundY }}
           className="absolute inset-0 z-10 opacity-20 dark:opacity-30"
           style={{
             backgroundImage: 'url(https://images.unsplash.com/photo-1504384308090-c894fdcc538d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80)',

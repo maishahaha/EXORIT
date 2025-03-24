@@ -5,14 +5,12 @@ interface ScrollAnimationConfig {
   offset?: [number, number];
   inputRange?: [number, number];
   outputRange?: [number, number];
-  direction?: 'vertical' | 'horizontal';
 }
 
 export const useScrollAnimation = ({
   offset = [0, 1],
   inputRange = [0, 1],
   outputRange = [0, 1],
-  direction = 'vertical'
 }: ScrollAnimationConfig = {}) => {
   const [element, setElement] = useState<HTMLElement | null>(null);
   const [elementTop, setElementTop] = useState(0);
