@@ -33,17 +33,17 @@ const teamMembers: TeamMember[] = [
     bio: "Full stack developer with a knack for building scalable web applications.",
     socials: {
       linkedin: "https://www.linkedin.com/in/g-t-fahad/",
-      github: "#"
+      github: "https://github.com/Golam-Tawhid"
     }
   },
   {
     name: "Maisha Iffat Chowdhury",
     role: "Software Engineer and UI/UX Designer",
-    image: "/team/image.png",
+    image: "/team/maisha.jpg",
     bio: "Creative software engineer and UI/UX designer with a passion for user-centered design.",
     socials: {
       linkedin: "https://www.linkedin.com/in/maisha-iffat-chowdhury",
-      github: "#"
+      github: "https://github.com/maishahaha"
     }
   }
 ];
